@@ -1,46 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/src/css/index.css">
     <title id="title"></title>
 </head>
+
 <body class="bg-secondary bg-opacity-10">
     <div class="container-fluid">
         <!--Inicio nav-->
-        <div class="row bg-opacity-90" style="padding: 1% 0 1% 0 ; background-color:#13EC21">
-            <div class="col-3">
-                <img src="https://guitarraandina.com/wp-content/uploads/Logo-Guitarra-Andina.png" alt="" class="image-responsive">
+        <div class="row bg-opacity-90" style="padding: 1% 0 1% 0 ; background-color:#34b334">
+            <div class="col-2">
+                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
             </div>
             <div class="col-6">
                 <nav class="nav justify-content-center">
-                    <a class="nav-link" href="#">Inicio</a>
-                    <a class="nav-link" href="#">Nosotros</a>
-                    <a class="nav-link" href="#">Cursos</a>
-                    <a href="#" class="nav-link">Planes</a>
-                    <a href="#" class="nav-link">Preguntas</a>      
+                    <a class="text-color nav-link" href="#">Inicio</a>
+                    <a class="text-color nav-link" href="#">Nosotros</a>
+                    <a class="text-color nav-link" href="#">Cursos</a>
+                    <a href="#" class="text-color nav-link">Planes</a>
+                    <a href="#" class="text-color nav-link">Preguntas</a>
                 </nav>
             </div>
-            <div class="col-3">
-                <a name="" id="" class="btn btn-primary" href="#" role="button">Ingresar</a>
-                <a name="" id="" class="btn btn-primary" href="#" role="button">Registro</a>
+            <div class="col-4">
+                <div class="login-borde">
+                    <nav class="nav justify-content-center posicion-login">
+
+                        <a name="" id="" class="nav-link text-color" href="#">Ingresar</a>
+                        <p class="separar">|</p>
+                        <a name="" id="" class="nav-link text-color" href="#">Registro</a>
+
+                    </nav>
+                </div>
             </div>
         </div>
         <!--Fin nav-->
-        <!--Contenido principal-->        
-        <div class="row bg-primary">
-            <div class="col-6 justify-content-center">
-                <h1>Aprende a tocar con los mejores</h1>
-                <p>Accede a cursos online</p>
-                <a name="" id="" class="btn btn-danger" href="#" role="button">Ver Cursos</a>
+        <!--Contenido principal-->
+        <div class="row ">
+            <div class="row contenedor2">
+            <div class="col-5 ">
+                <div class="div contenedor-anuncio">
+                    <h1> Aprende a tocar con los mejores</h1>
+                    <p >Accede a los cursos online </p>
+                    <a name="" id="" class="btn btn-danger" href="#" role="button">Ver Cursos</a>
+                </div>
             </div>
-            <div class="col-6">
-                <h1>Aca un video</h1>
+            <div class="col-7">
+                <div class="video">
+                    <iframe class="video-principal " src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1 " frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
-         </div>
-        
+        </div>    
+        </div>
+
     </div>
 </body>
+
 </html>
