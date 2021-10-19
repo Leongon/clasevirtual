@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Collapsible sidebar using Bootstrap 3</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="../static/src/css/inicio.curso.css">
+    <link rel="stylesheet" href="../static/src/css/curso.css">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
+            </div>
+
+            <ul class="list-unstyled components">
+
+                <li>
+                    <a href="#">Buscar Cursos</a>
+                </li>
+                <li>
+                    <a href="#">Cursos Inscritos</a>
+                </li>
+                <li>
+                    <a href="#">Recomendar</a>
+                </li>
+                <li>
+                    <a href="#">contactos</a>
+                </li>
+
+
+            </ul>
+
+
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+
+                    <div class="navbar-header">
+                        <button type="button" id="sidebarCollapse" class="btn btn-success navbar-btn">
+                            <i class="glyphicon glyphicon-align-left"></i>
+                            <span>Click</span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Page</a></li>
+                        </ul>
+                    </div>
+                    <div class="contenedor">
+                        <div class="col-4">
+                            <table class="table table-hover">
+                                <thead class="table table-active">
+                                    <th>
+                                        <h4>1. Teoría Musical</h4>
+                                        <p>Plan Basico e Intermedio</p>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td>
+                                            <a href="1">1. Lenguaje musical: solfeo y/o lenguaje en tablatura</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="2">2. Armonía básica: escalas y acordes</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="3">3. Lectura de cifrado armónico</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="4">4. Educación auditiva: trabajo armónico de acordes e intervalos.</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="5">5. Educación rítmica: trabajo con el metrónomo</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-8 ">
+                            <iframe class="class_video_1" src="https://www.youtube.com/embed/TM1zF311woM?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            
+                        </div>
+                    </div>
+                   
+                </div>
+            </nav>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <!-- jQuery CDN -->
+    <script src="../static/src/js/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap Js CDN -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar, #content').toggleClass('active');
+                $('.collapse.in').toggleClass('in');
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+        });
+    </script>
+    <script src="../static/src/js/recorre.js"></script>
+</body>
+
+</html>

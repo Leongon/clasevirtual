@@ -81,6 +81,7 @@
     padding: 3rem;
     height: 35.4rem;
     background-color: #000;
+    border-bottom: 3px solid #34b334;
 }  
 .slide{
     
@@ -97,4 +98,33 @@
     height: 25rem;
     border-radius: 10px ;
     
+}
+
+.contenedor-main-4{
+    color:black;
+    padding: 3rem;
+    height: 35.4rem;
+    background-color: white;
+    
+} 
+.color-card{
+    border-radius: 20px;
+    border: 1px solid #23bd1d;
+    box-shadow: 2px 2px 9px #23bd1d;
+    background-color: rgba(236, 247, 232, 0.877);
+    
+}
+.color-card img{
+    border-radius: 20px;
+    border: #34b334;
+}
+.tamaño-btn{
+    width: 100%;
+    height: 5rem;
+}
+.hora{
+    padding-top: 11px;
+}
+.sub-contenedor-main-4{
+    padding: 10px;
 }

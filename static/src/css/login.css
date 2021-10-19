@@ -1,0 +1,13 @@
+
+.card-login{
+    margin-top: 10%;
+    margin-left: 30%;
+    margin-right: 70%;
+    border: 1px solid #23bd1d  ;
+    box-shadow: 2px 2px 9px #23bd1d;
+    width: 30rem;
+}
+.header{
+    padding: 2px;
+    
+}

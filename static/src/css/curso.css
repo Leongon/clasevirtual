@@ -1,0 +1,22 @@
+.contenedor{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-areas:"col-4 col-8";
+}
+.col-4{
+    padding: 2rem;
+    grid-area: col-4;
+    box-shadow: 2px 2px 9px #23bd1d;
+    
+}
+.col-8{
+    grid-area: col-8;
+    
+    
+    box-shadow: 2px 2px 9px #23bd1d;
+}
+.class_video_1{
+    
+    width: 100%;
+    height: 100%;
+}
