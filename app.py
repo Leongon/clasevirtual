@@ -21,24 +21,23 @@ def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 
 # Controladores
-@app.route("/")
-def listarroductos():
+@app.route('/apiListarUsuarios')
+def apiListarUsuarios():
     try:
-        sql="SELECT * FROM dbindia.productos where estado = '1'"
+        sql="SELECT * FROM dbdesire.usuarios where estado = '1'"
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
         datos=cursor.fetchall()
-        productos=[]
+        usuarios=[]
         for fila in datos:
-            producto={'id':fila[0],'descripcion':fila[1],'tipo':fila[2],'marca':fila[3],'medida':fila[4]}
-            productos.append(producto)
+            producto={'id':fila[0],'usuario':fila[1],'pass':fila[2]}
+            usuarios.append(producto)
         conn.commit()
-        return jsonify({'product':productos, 'mensaje':"correcto"})
+        return jsonify({'product':usuarios, 'mensaje':"correcto"})
     except:
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
-#soluciona esto
 @app.route('/apiLogin', methods=['POST'])
 def apiLogin():
     try: 
