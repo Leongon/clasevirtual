@@ -52,22 +52,22 @@
                         Ingresar
                     </h5>
                 </div>
-                <form action="">
+                <form action="" id="form_login">
                     <div class="mb-3 row">
                         <label for="inputuser" class="col-sm-2 col-form-label">Usuario</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputuser">
+                            <input type="text" class="form-control" id="inputuser" name="inputuser">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword">
+                            <input type="password" class="form-control" id="inputPassword" name="inputPassword">
                         </div>
                     </div>
                     
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button type="button" class="btn btn-success ">Acceder</button>
+                        <button type="submit" class="btn btn-success ">Acceder</button>
                     </div>
                 </form>
             </div>
@@ -76,6 +76,8 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <script src="../static/src/js/jquery-3.6.0.min.js"></script>
         <script src="../static/src/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../static/src/js/datos/login.js"></script>
 </body>
 
 </html>
