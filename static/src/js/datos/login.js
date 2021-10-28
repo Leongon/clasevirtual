@@ -1,5 +1,5 @@
-var form=document.getElementById("form_login");
-
+var form = document.getElementById("form_login");
+var alertdanger = document.getElementsByClassName("alertdanger")
 /*
 form.addEventListener("submit",function(e){
     
@@ -23,15 +23,23 @@ form.addEventListener("submit",function(e){
 })
 */
 
-form.addEventListener('submit',function(e){
+form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var datos=new FormData(form);
-    var datojson={"usuario":datos.get("inputuser"),"pass":datos.get("inputPassword")}
+    var datos = new FormData(form);
+    var datojson = { "usuario": datos.get("inputuser"), "pass": datos.get("inputPassword") }
     axios({
-        method:'POST',
-        url:'/apiLogin',
+        method: 'POST',
+        url: '/apiLogin',
         data: datojson
     })
-    .then(res=>console.log(res.data))
-    
+        .then(res => {
+            console.log(res.data)
+            if (res.data === "Bienvenido") {
+              
+            } else {
+                $(".alertdanger").html('<div class="alert alert-danger">Usuario o Contraseña invalidos</div>')
+                
+            }
+        })
+
 })
