@@ -30,13 +30,14 @@ function login () {
     console.log(datojson)
     axios({
         method: 'POST',
-        url: '/apiLogin',
+        url: '/login',
         data: datojson
     })
         .then(res => {
             console.log(res.data)
             if (res.data === "Bienvenido") {
                 $(".alert").html('<div class="flex items-center bg-green-50 text-center"> <svg xmlns="http://www.w3.org/2000/svg"     class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50" fill="none"     viewBox="0 0 24 24" stroke="currentColor">      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg>  <div class="flex flex-col ml-3"> <div class="font-medium leading-none">'+res.data+'</div>  </div>  </div>')  
+                window.location.href = "/apiListarUsuarios";
             } else {
                 $(".alert").html('<div class="flex items-center bg-red-400 text-center"> <svg xmlns="http://www.w3.org/2000/svg"     class="w-16 h-16 rounded-2xl p-3 border border-blue-100 text-blue-400 bg-blue-50" fill="none"     viewBox="0 0 24 24" stroke="currentColor">      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"         d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path> </svg>  <div class="flex flex-col ml-3"> <div class="font-medium leading-none">'+res.data+'</div>  </div>  </div>') 
             }
@@ -103,16 +104,21 @@ $.validator.setDefaults( {
             number: true,
             rangelength:[9,9]
          }, 
-          email: {
-             required: true
+          email:{
+             required: true,
+             
+          },
+          Usuario:{
+            required: true,
+            minlength: 5
           },
           pass: {
              required: true,
-                
+             minlength: 6,    
           },
           pass_confirmar: {
             required: true,
-            minlength: 5,
+            minlength: 6,
             equalTo: "#pass"
          },
           agree: "required"
@@ -120,6 +126,10 @@ $.validator.setDefaults( {
        messages: {
         Nombre: {
             required: "Por favor llene sus Nombres",
+         },
+         Usuario: {
+            required: "Por favor llene el campo Usuario",
+            minlength:"Tu Usuario debe se mayor de 5 caracteres de longitud"
          },
          Apellido: {
             required: "Por favor llene sus Apellidos",
@@ -131,16 +141,17 @@ $.validator.setDefaults( {
           },      
          
           email: {
-             required: "ingrese su usuario",
+             required: "ingrese su Correo electronico",
+             email:"Correo electronico invalido"
           },
           
           pass: {
              required: "Por favor ingresa una contraseña",
-             minlength: "Tu contraseña debe ser de no menos de 5 caracteres de longitud"
+             minlength: "Tu Contraseña debe se mayor de 6 caracteres de longitud"
           },
           pass_confirmar: {
             required: "Ingresa un password",
-            minlength: "Tu contraseña debe ser de no menos de 5 caracteres de longitud",
+            minlength: "Tu Contraseña debe se mayor de 6 caracteres de longitud",
             equalTo: "Por favor ingresa la misma contraseña de arriba"
          },
 

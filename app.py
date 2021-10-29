@@ -41,7 +41,7 @@ def apiListarUsuarios():
     except:
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
-@app.route('/apiLogin', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def apiLogin():
     try: 
         sql="SELECT * FROM dbDesire.usuarios where usuario = '{0}' and pass = '{1}'".format(request.json['usuario'],request.json['pass'])
