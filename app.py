@@ -14,9 +14,6 @@ conexion = MySQL(app)
 @app.route("/")
 def index():
     return render_template("index.html")
-@app.route("/registrar")
-def registrar():
-    return render_template("registrar.html")
 @app.route("/login")
 def inventario():
     return render_template("login.html")
@@ -24,6 +21,90 @@ def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 
 # Controladores
+@app.route('/apiLogin', methods=['POST'])
+def apiLogin():
+    try: 
+        sql="SELECT * FROM dbDesire.usuarios where usuario = '{0}' and pass = '{1}'".format(request.json['usuario'],request.json['pass'])
+        print(sql)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()
+        if not len(datos) == 0:
+            return jsonify("Bienvenido")
+        else:
+            return jsonify("No existe el usuario o la contraseña es incorrecta")
+
+    except:
+        return jsonify("Error en la base de datos contacta con el administrador")
+
+def apileerUsuario(user):
+    try: 
+        sql="SELECT usuario FROM dbDesire.usuarios where usuario = '{0}'".format(user)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()              
+        if not len(datos) == 0:
+            return {"success" : True, "msj": "Usuario ya existe"}
+        else:
+            return {"success" : False, "msj": "ok"}
+    except Exception as ex:
+        raise ex
+def apileerCorreo(correo):
+    try: 
+        sql="SELECT correo FROM dbDesire.usuarios where correo = '{0}'".format(correo)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()              
+        if not len(datos) == 0:
+            return {"success" : True, "msj": "Correo ya registrado"}
+        else:
+            return {"success" : False, "msj": "ok"}
+    except Exception as ex:
+        raise ex
+def apileerTelefono(telefono):
+    try: 
+        sql="SELECT telefono FROM dbDesire.usuarios where telefono = '{0}'".format(telefono)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()              
+        if not len(datos) == 0:
+            return {"success" : True, "msj": "El numero telefonico ya fue registrado"}
+        else:
+            return {"success" : False, "msj": "ok"}
+    except Exception as ex:
+        raise ex
+
+@app.route('/apiRegistro', methods=['POST'])
+def apiRegistro():
+    try:
+        resUsuario = apileerUsuario(request.json['usuario'])
+        resCorreo = apileerCorreo(request.json['correo'])
+        resTelefono = apileerTelefono(request.json['telefono'])
+
+        print(resUsuario)
+        print(resCorreo)
+        print(resTelefono)
+
+        if resUsuario['success'] & resCorreo['success'] & resTelefono['success'] != True:
+            sql = """INSERT INTO dbDesire.usuarios (usuario, pass, nombres, apellidos, correo, telefono, fkrol, estado) 
+            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','1','1');""".format(request.json['usuario'],request.json['pass'],request.json['nombres'],request.json['apellidos'],request.json['correo'],request.json['telefono'])
+            print (sql)
+            conn = conexion.connect()
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            conn.commit()
+            return jsonify("Registro correcto")
+        else:
+            return jsonify("Esto no deberia de salir porq ya estamos validando en las apis xd y no deberias poder verlo")
+
+    except Exception as ex:
+            raise ex
+
+
 @app.route('/apiListarUsuarios')
 def apiListarUsuarios():
     try:
@@ -41,23 +122,7 @@ def apiListarUsuarios():
     except:
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
-@app.route('/login', methods=['POST'])
-def apiLogin():
-    try: 
-        sql="SELECT * FROM dbDesire.usuarios where usuario = '{0}' and pass = '{1}'".format(request.json['usuario'],request.json['pass'])
-        conn = conexion.connect()
-        cursor = conn.cursor()
-        cursor.execute(sql)
-        datos=cursor.fetchall()
-        print(datos)
-        if not len(datos) == 0:
-            return jsonify("Bienvenido")
-        else:
-            return jsonify("No existe el usuario o la contraseña es incorrecta")
 
-    except:
-        return jsonify("Error en la base de datos contacta con el administrador")
-    
 
 if __name__ == "__main__":
     app.config.from_object(config['development'])
