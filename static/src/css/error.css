@@ -1,0 +1,9 @@
+.error{
+    color: red;
+
+}
+input.error{
+   border: 1px dashed red;
+   font-weight: 300;
+   color: red;
+}

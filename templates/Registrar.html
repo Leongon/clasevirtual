@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="../static/src/css/error.css">
     <title>Document</title>
 </head>
 
@@ -91,7 +91,7 @@
                         <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
                             Login
                         </label>
-                        <form id="form">
+                        <form id="form_registro">
                             <div>
                                 <input type="text" placeholder="Nombre"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
@@ -118,12 +118,12 @@
                             <div class="mt-2">
                                 <input type="password" placeholder="Contraseña"
                                     class=" p-5 mt-1 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="pass">
+                                    id="pass"name="pass">
                             </div>
                             <div class="mt-2">
                                 <input type="password" placeholder="Confirmar contraseña"
                                     class=" p-5 mt-1 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="pass-confirmar">
+                                    name="pass_confirmar">
                             </div>
 
                             <div class="mt-7 flex">
@@ -191,7 +191,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
         integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>   
     <script src="../static/src/js/nav.js"></script>
+    <script src="../static/src/js/datos/login.js"></script>
 </body>
 
 </html>
