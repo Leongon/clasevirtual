@@ -14,6 +14,9 @@ conexion = MySQL(app)
 @app.route("/")
 def index():
     return render_template("index.html")
+@app.route("/registrar")
+def registrar():
+    return render_template("registrar.html")
 @app.route("/login")
 def inventario():
     return render_template("login.html")
