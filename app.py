@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template, request, make_response, jsonify, redirect
 from flask.json import JSONEncoder
 from flaskext.mysql import MySQL
@@ -37,7 +38,20 @@ def apiLogin():
 
     except:
         return jsonify("Error en la base de datos contacta con el administrador")
-
+@app.route('/apiSearchUsuario', methods=['POST'])
+def apiSearchUsuario():
+    try:
+        sql="SELECT usuario FROM dbDesire.usuarios where usuario = '{0}'".format(request.json['usuario'])
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()              
+        if not len(datos) == 0:
+            return {"success" : True, "msj": "Usuario ya existe"}
+        else:
+            return {"success" : False, "msj": "ok"}    
+    except Exception as ex:
+            raise ex
 def apileerUsuario(user):
     try: 
         sql="SELECT usuario FROM dbDesire.usuarios where usuario = '{0}'".format(user)
@@ -51,6 +65,20 @@ def apileerUsuario(user):
             return {"success" : False, "msj": "ok"}
     except Exception as ex:
         raise ex
+@app.route('/apiSearchCorreo', methods=['POST'])
+def apiSearchCorreo():
+    try:
+        sql="SELECT correo FROM dbDesire.usuarios where correo = '{0}'".format(request.json['correo'])
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()              
+        if not len(datos) == 0:
+            return {"success" : True, "msj": "Correo ya registrado"}
+        else:
+            return {"success" : False, "msj": "ok"}
+    except Exception as ex:
+        raise ex
 def apileerCorreo(correo):
     try: 
         sql="SELECT correo FROM dbDesire.usuarios where correo = '{0}'".format(correo)
@@ -60,6 +88,20 @@ def apileerCorreo(correo):
         datos=cursor.fetchall()              
         if not len(datos) == 0:
             return {"success" : True, "msj": "Correo ya registrado"}
+        else:
+            return {"success" : False, "msj": "ok"}
+    except Exception as ex:
+        raise ex
+@app.route('/apiSearchTelefono', methods=['POST'])
+def apiSearchTelefono():
+    try: 
+        sql="SELECT telefono FROM dbDesire.usuarios where telefono = '{0}'".format(request.json('telefono'))
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()              
+        if not len(datos) == 0:
+            return {"success" : True, "msj": "El numero telefonico ya fue registrado"}
         else:
             return {"success" : False, "msj": "ok"}
     except Exception as ex:
@@ -85,14 +127,9 @@ def apiRegistro():
         resCorreo = apileerCorreo(request.json['correo'])
         resTelefono = apileerTelefono(request.json['telefono'])
 
-        print(resUsuario)
-        print(resCorreo)
-        print(resTelefono)
-
         if resUsuario['success'] & resCorreo['success'] & resTelefono['success'] != True:
             sql = """INSERT INTO dbDesire.usuarios (usuario, pass, nombres, apellidos, correo, telefono, fkrol, estado) 
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','1','1');""".format(request.json['usuario'],request.json['pass'],request.json['nombres'],request.json['apellidos'],request.json['correo'],request.json['telefono'])
-            print (sql)
             conn = conexion.connect()
             cursor = conn.cursor()
             cursor.execute(sql)
