@@ -30,7 +30,7 @@ function login () {
     console.log(datojson)
     axios({
         method: 'POST',
-        url: '/login',
+        url: '/apiLogin',
         data: datojson
     })
         .then(res => {
