@@ -22,6 +22,14 @@ def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 
 @app.route('/registrar')
+def registrar():
+    return render_template("registrar.html")
+
+@app.route('/panel')
+def panel():
+    return render_template("panel.html")
+
+@app.route('/inicio')
 def inicio():
     return render_template("inicio.html")    
 
