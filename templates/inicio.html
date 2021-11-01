@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>Arrow Function</h1>
+
+    <p>A demonstration of a simple arrow function.</p>
+    
+    <p id="demo"></p>
+      
+    <script>
+    hello = () => {
+      return "Hello World!";
+    }
+    
+    document.getElementById("demo").innerHTML = hello();
+    </script>
+  </body>
+</html>

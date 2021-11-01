@@ -12,7 +12,7 @@
 
 <body>
     <!-- navbar goes here -->
-    <nav class="bg-green-400 tex-color ">
+    <nav class="bg-gray-800 tex-color ">
 
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
@@ -97,6 +97,7 @@
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                                     name="Nombre">
                             </div>
+                            <div id="resul"></div>
 
                             <div class="mt-2">
                                 <input type="text" placeholder="Apellido"
@@ -105,21 +106,28 @@
                             </div class="mt-2">
 
                             <div class="mt-2">
-                                <input type="tel" placeholder="Telefono celular"
+                                <input type="text" placeholder="Telefono celular"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="tel">
+                                    name="tel" id="tel">
                             </div class="mt-2">
+                            <div class="prob_tel"></div>
+
                             <div class="mt-2">
                                 <input type="email" placeholder="Correo electronico"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="email">
+                                    name="email" id="email" required>
                             </div>
+                            <div class="prob_co"></div>
 
                             <div class="mt-2">
                                 <input type="text" placeholder="Usuario"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="Usuario">
+                                    name="Usuario"id="Usuario">
+                                <div class="prob_usu">
+
+                                </div>
                             </div>
+
 
                             <div class="mt-2">
                                 <input type="password" placeholder="Contraseña"
@@ -161,8 +169,8 @@
 
                                     Facebook
                                 </button>
-
-                                <button
+ 
+                                <button onclick="validarcorreo(document.getElementById('email').value)"
                                     class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
 
                                     Google
@@ -201,7 +209,7 @@
         integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../static/src/js/nav.js"></script>
-    <script src="../static/src/js/datos/login.js"></script>
+    <script src="../static/src/js/datos/registro.js"></script>
 </body>
 
 </html>
