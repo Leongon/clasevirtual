@@ -1,211 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/src/css/index.css">
-    <title id="title"></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Rainblur Landing Page Template: Tailwind Toolbox</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+  <link rel="stylesheet" href="../static/src/css/scroll.css">
+
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
+  <!--Replace with your tailwind.css once created-->
+  <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+    html {
+      font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+  </style>
 </head>
 
-<body class="">
-    <div class="container-fluid">
-        <!--Inicio nav-->
-        <div class="row bg-opacity-90" style="padding: 1% 0 1% 0 ; background-color:#34b334">
-            <div class="col-2">
-                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
-            </div>
-            <div class="col-6">
-                <nav class="nav justify-content-center">
-                    <a class="text-color nav-link" href="index.html">Inicio</a>
-                    <a class="text-color nav-link" href="#">Nosotros</a>
-                    <a class="text-color nav-link" href="#">Cursos</a>
-                    <a href="Planes.guitarra.html" class="text-color nav-link">Planes</a>
-                    <a href="#" class="text-color nav-link">Preguntas</a>
-                </nav>
-            </div>
-            <div class="col-4">
-                <div class="login-borde">
-                    <nav class="nav justify-content-center posicion-login">
-                        <a name="" id="" class="nav-link text-color" href="#">Ingresar</a>
-                        <p class="separar">|</p>
-                        <a name="" id="" class="nav-link text-color" href="#">Registro</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!--Fin nav-->
-        <!--Contenido principal-->
-        <!--Video inicial-->
-        <div class="row contenedor-main">
-            <img src="../static/src/img/Fondo1.jpg" alt="">
-            <div class="row contenedor1">
-                <div class="col-5 ">
-                    <div class="div contenedor-anuncio">
-                        <div>
-                            <h1> Aprende a tocar con los mejores</h1>
-                            <p>Accede a los cursos online </p>
-                            <a name="" id="" class="btn btn-danger" href="#" role="button">Ver Cursos</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-7">
-                    <div class="video">
-                        <iframe class="video-principal "
-                            src="https://www.youtube.com/embed/tgbNymZ7vqY?autoplay=1&mute=1 " frameborder="0"
-                            allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-<<<<<<< HEAD
-        <!--Contenido principal 2-->
-        <div class="row contenedor-main-2">
-            <h1>Quienes Somos?</h1>
-            <div class="contenedor">
+<body class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed"
+  style="background-image: url('../static/src/img/header.png');">
+    <!-- mobile menu -->
+    <div class="mobile-menu bg-gray-800 hidden md:hidden">
+      <a href="/"
+          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+      <a href="/Curso"
+          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+      <a href="#"
+          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+      <a href="#"
+          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+      <a href="/login"
+          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
 
-                <p>
-                    Disceri Music nació como una idea de cambio, de regeneración de los ideales tradicionales de la
-                    música,
-                    potenciando la utilización de las TIC's en la educación a todos los niveles, acercándose a los
-                    centros
-                    para enseñar una nueva forma de entender la música o organizando y gestionando nuevos formatos de
-                    concierto o evento musical.</p>
-                <p>
-                    Pero si estás aquí, lo más seguro es que estés buscando una forma de mejorar como músico,
-                    quieras ampliar tus conocimientos y necesites flexibilidad para realizar tus estudios.
-                    Porque tú sabes que la búsqueda del perfeccionamiento musical requiere de horas y más horas de
-                    práctica... y siempre falta tiempo. </p>
-                <p>
-                    Ahora por un momento, imagina que estudias en una escuela que te ayuda a progresar a tu ritmo y
-                    logras
-                    ser más productivo, que tienes un programa educativo a tú medida, que puedes formarte con esos
-                    músicos
-                    que admiras y con todas tus clases al alcance de un botón ... de forma personalizada.</p>
-=======
-        <!--/Video inicial-->
-        <!--Ofrecemos-->
-        <div class="row" style="background: #34b334; padding: 10% 0 10% 0;">  
-            <div class="col-3">
-                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
-                <h4>Aprendizaje</h4>
-                <h4>Garantizado</h4>
-                <p>Nos respalda mas de 1000 cursos vendidos</p>
->>>>>>> fde744a2a0e4ec937dd93c1d364ff2b1d3a654c6
-            </div>
-            <div class="col-3">
-                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
-                <h4>Aprendizaje</h4>
-                <h4>Garantizado</h4>
-                <p>Nos respalda mas de 1000 cursos vendidos</p>
-            </div>
-            <div class="col-3">
-                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
-                <h4>Aprendizaje</h4>
-                <h4>Garantizado</h4>
-                <p>Nos respalda mas de 1000 cursos vendidos</p>
-            </div>
-            <div class="col-3">
-                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
-                <h4>Aprendizaje</h4>
-                <h4>Garantizado</h4>
-                <p>Nos respalda mas de 1000 cursos vendidos</p>
-            </div>                
+  </div>
+  <div class="h-full">
+    <!--Nav-->
+    
+    <div class="flex w-full container mx-auto">
+    
+      <div class="w-full flex items-center justify-between">
+        <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+          href="#">
+          Disceri<span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">Music</span>
+        </a>
+
+        <div class="flex w-1/2 justify-end content-center">
+          <div class="hidden md:flex items-center space-x-1 text-red-500">
+            <a href="/"
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+            <a href="/curso" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+            <a href="#"
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+            <a href="#"
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+              <a href="/login"
+          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+          </div>
+          <a class="inline-block text-blue-300 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
+            href="#">
+            <svg class="fill-current h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path
+                d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z">
+            </svg>
+          </a>
+          <a class="inline-block text-blue-300 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
+            href="#">
+            <svg class="fill-current h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"></path>
+            </svg>
+          </a>
+          <!-- mobile button goes here -->
+          <div class="md:hidden flex items-center">
+            <button class="mobile-menu-button">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            
         </div>
-<<<<<<< HEAD
-        <!--Contenido principal 3-->
-=======
-        <!--/Ofrecemos-->
-        <!--Slider cursos-->
->>>>>>> fde744a2a0e4ec937dd93c1d364ff2b1d3a654c6
-        <div class="row contenedor-main-3">
-            <h1>Cursos</h1>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100 img-slider" src="../static/src/img/C_Canto.jpg" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Canto</h5>
-                            <p>Inicia tus clases de Canto Con nostros te enseñaremos las tecnicas, y mejoraremos esa
-                                hermoza voz que tienes</p>
-                            <a name="" id="" class="btn btn-danger" href="#" role="button">...mas Informacion</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100 img-slider" src="../static/src/img/C_guiatarra.jpg"
-                            alt="Second slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Guitarra</h5>
-                            <p>Aprende atocar la Guitarra de una manera Muy facil y divertida</p>
-                            <a name="" id="" class="btn btn-danger" href="#" role="button">... mas Informacion</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100 img-slider" src="../static/src/img/C_Piano.jpg" alt="Third slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Piano</h5>
-                            <p>Aprende a tocar el Piano con clases dinámicas, que podrás entender fácilmente y que te
-                                ayudarán a iniciarte en el mundo de la música para tocar tus canciones preferidas,
-                                formar una banda o lo que te imagines.</p>
-                            <a name="" id="" class="btn btn-danger" href="#" role="button">...mas Informacion</a>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
-<<<<<<< HEAD
+        
+      </div>
       
-        <script src="../static/src/js/jquery-3.6.0.min.js"></script>
-        <script src="../static/src/js/bootstrap.min.js"></script>
-</body>
+      </div>
+    
+    </div>
 
-=======
-        <!--Slider cursos-->
-        <!--About us-->
-        <div class="row contenedor-main-2">
-            <h1>Quienes Somos?</h1>
-            <div class="contenedor">
-                <p>
-                    Disceri Music nació como una idea de cambio, de regeneración de los ideales tradicionales de la
-                    música,
-                    potenciando la utilización de las TIC's en la educación a todos los niveles, acercándose a los
-                    centros
-                    para enseñar una nueva forma de entender la música o organizando y gestionando nuevos formatos de
-                    concierto o evento musical.</p>
-                <p>
-                    Pero si estás aquí, lo más seguro es que estés buscando una forma de mejorar como músico,
-                    quieras ampliar tus conocimientos y necesites flexibilidad para realizar tus estudios.
-                    Porque tú sabes que la búsqueda del perfeccionamiento musical requiere de horas y más horas de
-                    práctica... y siempre falta tiempo. </p>
-                <p>
-                    Ahora por un momento, imagina que estudias en una escuela que te ayuda a progresar a tu ritmo y
-                    logras
-                    ser más productivo, que tienes un programa educativo a tú medida, que puedes formarte con esos
-                    músicos
-                    que admiras y con todas tus clases al alcance de un botón ... de forma personalizada.</p>
+    <!--Main-->
+    <div class="block mb-100 container pt-12 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+      <!--Left Col-->
+      <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
+        <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
+          Aprende Muisica ya!
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+            Tan solo Registrate
+          </span>
+          Esta es tu oputinidad
+        </h1>
+        <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
+          Aprobecha y el tiempo y se la sensacion entre tus amigos
+        </p>
+
+        <a href="/registrar"
+          class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 bg-yellow-500 py-2 px-3 rounded text-center">Registrate
+          Ya!</a>
+
+      </div>
+
+      <!--Right Col-->
+      <div class="w-full xl:w-3/5 pt-4 overflow-hidden">
+        <div class="relative" style="padding-top: 50.25%">
+          <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube-nocookie.com/embed/FMrtSHAAPhM"
+            frameborder="1" …></iframe>
+        </div>
+      </div>
+      <main>
+        <div class="py-24">
+            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
+                    <div>
+                        <div
+                            class="p-12 bg-gray-600 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700 sm:px-20">
+                            <div>
+                            <div class="mt-8 text-2xl dark:text-gray-200"> Quienes somos?</div>
+                            <div class="mt-6 text-white dark:text-white"> 
+                              Somos un grupo de jóvenes emprendedores que hemos decidido crear esta plataforma para el apoyo 
+                              escolar de los alumnos en nivel primario, secundario y académico.
+                             </div>
+                        </div>
+                        <div class="grid grid-cols-1 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-2">
+                          <div class="p-6">
+                              <div class="flex items-center"><svg fill="none" stroke="currentColor"
+                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      viewBox="0 0 24 24" class="w-8 h-8 text-white dark:text-gray-200">
+                                      <path
+                                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                      </path>
+                                  </svg>
+                                  <div
+                                      class="ml-4 text-lg font-semibold leading-7 text-white dark:text-gray-200">
+                                      <a >Apoyo en cual quier curso</a>
+                                  </div>
+                              </div>
+                              <div class="ml-12">
+                                  <div class="mt-2 text-sm text-white dark:text-gray-400"> Consideramos que el apoyo en el aprendizaje es importante ya que permite al alumno afianzar el aprendizaje.
+                                     Si bien el método que proponemos es a distancia, el seguimiento es personalizado,
+                                     brindando tranquilidad a los padres evitando situaciones de stress que conlleva a terminar un ciclo lectivo 
+                                     corriendo contra reloj para que sus hijos tengan que rendir conceptos mal aprendidos por falta de tiempo.
+                                     De esta manera, los alumnos no solamente refuerzan el conocimiento de la materia en cuestión, 
+                                     sino también interactúan con los profesores, haciendo las preguntas necesarias para la comprensión, desarrollo e interés del conocimiento.
+                                  </div>
+                              </div>
+                          </div>
+                          <div
+                              class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                              <div class="flex items-center"><svg fill="none" stroke="currentColor"
+                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      viewBox="0 0 24 24" class="w-8 h-8 text-white dark:text-gray-200">
+                                      <path
+                                          d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                                      </path>
+                                      <path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                  </svg>
+                                  <div
+                                      class="ml-4 text-lg font-semibold leading-7 text-white dark:text-gray-200">
+                                      <a >Nuestra Misión</a>
+                                  </div>
+                              </div>
+                              <div class="ml-12">
+                                  <div class="mt-2 text-sm text-white dark:text-gray-400">
+                                    A raíz de esto es que nace, Escuelas Online cumpliendo la misión que profesores de diferentes
+                                    partes que puedan enseñar con clases particulares a todos los alumnos de habla hispana.
+                                    Nuestro concepto general es proteger el progreso .
+                                    La educación, el conocimiento y el compromiso es algo que se desarrolla desde los jóvenes. 
+                                    Es una contribución que hacemos apoyando a la educación e implementando y usando las nuevas tecnologías.
+                                    Por ello, la página ofrece una plataforma para que los interesados puedan brindar cursos online grabados.
+                                   </div>
+                              </div>
+                          </div>
+                          <div class="p-6 border-t border-gray-200 dark:border-gray-700">
+                              <div class="flex items-center"><svg fill="none" stroke="currentColor"
+                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      viewBox="0 0 24 24" class="w-8 h-8 text-gray-400 dark:text-gray-200">
+                                      <path
+                                          d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                      </path>
+                                  </svg>
+                                  <div
+                                      class="ml-4 text-lg font-semibold leading-7 text-white dark:text-gray-200">
+                                      <a >Ayudar a los estudiantes</a>
+                                  </div>
+                              </div>
+                              <div class="ml-12">
+                                  <div class="mt-2 text-sm text-white dark:text-gray-400">
+                                     Muchos jóvenes en la actualidad viven en un contexto socioeconómico desfavorable para su desarrollo 
+                                     e integridad para continuar con estudios superiores por causa de no contar con suficiente apoyo desde 
+                                     las aulas por falta de motivación y presentan problemas de comprensión de las distintas materia </div>
+                              </div>
+                          </div>
+                          <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
+                              <div class="flex items-center"><svg fill="none" stroke="currentColor"
+                                      stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      viewBox="0 0 24 24" class="w-8 h-8 text-gray-400 dark:text-gray-200">
+                                      <path
+                                          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                      </path>
+                                  </svg>
+                                  <div
+                                      class="ml-4 text-lg font-semibold leading-7 text-white dark:text-gray-200">
+                                      Nuestro Objetivo</div>
+                              </div>
+                              <div class="ml-12">
+                                  <div class="mt-2 text-sm text-white dark:text-gray-400">
+                                    La página cuenta con un Directorio donde cada profesional se registra de manera única y gratuita 
+                                    (durante este año). Los cursos que se suben al portal son de paga. </div>
+                              </div>
+                          </div>
+                      </div>
+                        
+                       
+                    </div>
+                </div>
             </div>
         </div>
-        <!--/About us-->
+    </main>
+      <!--Footer-->
+      <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
+        <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; Disceri Music 2021</a>
+        - Aprende Musica
+        <a class="text-gray-500 no-underline hover:no-underline " href="/">Registrar</a>
+      </div>
     </div>
+    
+  </div>
+  <script src="../static/src/js/nav.js"></script>
 </body>
-<footer>
-    <script src="../static/src/js/jquery-3.6.0.min.js"></script>
-    <script src="../static/src/js/bootstrap.min.js"></script>
-</footer>
->>>>>>> fde744a2a0e4ec937dd93c1d364ff2b1d3a654c6
+
 </html>

@@ -1,149 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../static/src/css/error.css">
 
-    <title>Collapsible sidebar using Bootstrap 3</title>
+    <link rel="stylesheet" href="../static/src/css/scroll.css">
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="../static/src/css/inicio.curso.css">
-    <link rel="stylesheet" href="../static/src/css/curso.css">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-
+    <title>Document</title>
 
 </head>
 
-<body>
-    <div class="wrapper">
-        <!-- Sidebar Holder -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="../static/src/img/logo.png" alt="" class="image-responsive img-logo">
-            </div>
+<body class="leading-normal tracking-normal text-indigo-400  bg-cover bg-fixed" style="background-image: url('../static/src/img/header.png');"> 
 
-            <ul class="list-unstyled components">
+    <!-- navbar goes here -->
+    <nav class="bg-gray-800 tex-color ">
 
-                <li>
-                    <a href="#">Buscar Cursos</a>
-                </li>
-                <li>
-                    <a href="#">Cursos Inscritos</a>
-                </li>
-                <li>
-                    <a href="#">Recomendar</a>
-                </li>
-                <li>
-                    <a href="#">contactos</a>
-                </li>
-
-
-            </ul>
-
-
-        </nav>
-
-        <!-- Page Content Holder -->
-        <div id="content">
-
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-
-                    <div class="navbar-header">
-                        <button type="button" id="sidebarCollapse" class="btn btn-success navbar-btn">
-                            <i class="glyphicon glyphicon-align-left"></i>
-                            <span>Click</span>
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Page</a></li>
-                        </ul>
-                    </div>
-                    <div class="contenedor">
-                        <div class="col-4">
-                            <table class="table table-hover">
-                                <thead class="table table-active">
-                                    <th>
-                                        <h4>1. Teoría Musical</h4>
-                                        <p>Plan Basico e Intermedio</p>
-                                    </th>
-                                </thead>
-                                <tbody>
-                                    
-                                    <tr>
-                                        <td>
-                                            <a href="1">1. Lenguaje musical: solfeo y/o lenguaje en tablatura</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="2">2. Armonía básica: escalas y acordes</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="3">3. Lectura de cifrado armónico</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="4">4. Educación auditiva: trabajo armónico de acordes e intervalos.</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <a href="5">5. Educación rítmica: trabajo con el metrónomo</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-8 ">
-                            <iframe class="class_video_1" src="https://www.youtube.com/embed/TM1zF311woM?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-4">
+                    <!-- logo -->
+                    <div>
+                        <div class="text-center mt-2 ">                   
+                            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                                Disceri
+                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                                    Music
+                                </span>
+                                </a>
+                            </h1>
                         </div>
                     </div>
-                   
+
+                    <!-- primary nav -->
+                    <div class="hidden md:flex items-center space-x-1 text-red-500">
+                        <a href="/"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+                         <a href="/curso"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+                        <a href="#"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+                        <a href="#"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+                    </div>
                 </div>
-            </nav>
 
+                <!-- secondary nav -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="/login"
+                        class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+                    <a href="/registrar"
+                        class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
+                </div>
+
+                <!-- mobile button goes here -->
+                <div class="md:hidden flex items-center">
+                    <button class="mobile-menu-button">
+                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- mobile menu -->
+        <div class="mobile-menu hidden md:hidden">
+            <a href="/"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+            <a href="#"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+            <a href="#"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+            <a href="#"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+            <a href="/login"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+            <a href="/registrar"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
+
+        </div>
+    </nav>
+    <!-- Contenido aqui -->
+    <div class="login">
+        <div class="alert"></div>
+        <!-- component -->
+        <!-- This is an example component -->
+        <div class="font-sans">
+            <!-- component -->
+            <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+                <div class="text-center pb-12">                   
+                    <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+                        <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                        Cur
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                            sos
+                        </span>
+                        </a>
+                    </h1>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+                        <div>
+                            <img class="object-center object-cover h-auto w-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo">
+                        </div>
+                        <div class="text-center py-8 sm:py-6">
+                            <p class="text-xl text-gray-700 font-bold mb-2">Dany Bailey</p>
+                            <p class="text-base text-gray-400 font-normal">Software Engineer</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+                        <div>
+                            <img class="object-center object-cover h-auto w-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo">
+                        </div>
+                        <div class="text-center py-8 sm:py-6">
+                            <p class="text-xl text-gray-700 font-bold mb-2">Lucy Carter</p>
+                            <p class="text-base text-gray-400 font-normal">Graphic Designer</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+                        <div>
+                            <img class="object-center object-cover h-auto w-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80" alt="photo">
+                        </div>
+                        <div class="text-center py-8 sm:py-6">
+                            <p class="text-xl text-gray-700 font-bold mb-2">Jade Bradley</p>
+                            <p class="text-base text-gray-400 font-normal">Dev Ops</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+                        <div>
+                            <img class="object-center object-cover h-auto w-full" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo">
+                        </div>
+                        <div class="text-center py-8 sm:py-6">
+                            <p class="text-xl text-gray-700 font-bold mb-2">Dany Bailey</p>
+                            <p class="text-base text-gray-400 font-normal">Software Engineer</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+                        <div>
+                            <img class="object-center object-cover h-auto w-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo">
+                        </div>
+                        <div class="text-center py-8 sm:py-6">
+                            <p class="text-xl text-gray-700 font-bold mb-2">Lucy Carter</p>
+                            <p class="text-base text-gray-400 font-normal">Graphic Designer</p>
+                        </div>
+                    </div>
+                    <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
+                        <div>
+                            <img class="object-center object-cover h-auto w-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1171&q=80" alt="photo">
+                        </div>
+                        <div class="text-center py-8 sm:py-6">
+                            <p class="text-xl text-gray-700 font-bold mb-2">Jade Bradley</p>
+                            <p class="text-base text-gray-400 font-normal">Dev Ops</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
         </div>
     </div>
-
-
-
-
-
-
-
-    <!-- jQuery CDN -->
+    
     <script src="../static/src/js/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap Js CDN -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+        integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../static/src/js/nav.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+        integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../static/src/js/datos/login.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
 
-
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar, #content').toggleClass('active');
-                $('.collapse.in').toggleClass('in');
-                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-            });
-        });
-    </script>
-    <script src="../static/src/js/recorre.js"></script>
 </body>
 
 </html>

@@ -20,7 +20,19 @@ def inventario():
     return render_template("login.html")
 def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
-
+@app.route('/registrar')
+def registrar():
+    return render_template("registrar.html")
+@app.route('/panel')
+def panel():
+    return render_template("panel.html")
+@app.route('/curso')
+def curso():
+    return render_template("Curso.html")
+        
+@app.route('/inicio')
+def inicio():
+    return render_template("inicio.html")    
 # Controladores
 @app.route('/apiLogin', methods=['POST'])
 def apiLogin():
@@ -96,7 +108,7 @@ def apileerCorreo(correo):
 @app.route('/apiSearchTelefono', methods=['POST'])
 def apiSearchTelefono():
     try: 
-        sql="SELECT telefono FROM dbDesire.usuarios where telefono = '{0}'".format(request.json('telefono'))
+        sql="SELECT telefono FROM dbDesire.usuarios where telefono = '{0}'".format(request.json['telefono'])
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)

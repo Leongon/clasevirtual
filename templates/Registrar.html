@@ -8,28 +8,38 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/src/css/error.css">
     <title>Document</title>
+    <link rel="stylesheet" href="../static/src/css/scroll.css">
+
+    
 </head>
 
 <body>
     <!-- navbar goes here -->
-    <nav class="bg-green-400 tex-color ">
+    <nav class="bg-gray-800 tex-color ">
 
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="flex space-x-4">
                     <!-- logo -->
                     <div>
-                        <a href="#" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
-                        </a>
+                        <div class="text-center mt-2 ">                   
+                            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
+                                Disceri
+                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                                    Music
+                                </span>
+                                </a>
+                            </h1>
+                        </div>
                     </div>
+
 
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
-                        <a href="#"
+                        <a href="/"
                             class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Nosotros</a>
-                        <a href="#"
+                        <a href="/curso"
                             class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
                         <a href="#"
                             class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
@@ -62,11 +72,10 @@
 
         <!-- mobile menu -->
         <div class="mobile-menu hidden md:hidden">
-            <a href="#"
+            <a href="/"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-            <a href="#"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Nosotros</a>
-            <a href="#"
+            
+            <a href="/curso"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
@@ -97,6 +106,7 @@
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                                     name="Nombre">
                             </div>
+                            <div id="resul"></div>
 
                             <div class="mt-2">
                                 <input type="text" placeholder="Apellido"
@@ -105,21 +115,28 @@
                             </div class="mt-2">
 
                             <div class="mt-2">
-                                <input type="tel" placeholder="Telefono celular"
+                                <input type="text" placeholder="Telefono celular"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="tel">
+                                    name="tel" id="tel">
                             </div class="mt-2">
+                            <div class="prob_tel"></div>
+
                             <div class="mt-2">
                                 <input type="email" placeholder="Correo electronico"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="email">
+                                    name="email" id="email" required>
                             </div>
+                            <div class="prob_co"></div>
 
                             <div class="mt-2">
                                 <input type="text" placeholder="Usuario"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="Usuario">
+                                    name="Usuario"id="Usuario">
+                                <div class="prob_usu">
+
+                                </div>
                             </div>
+
 
                             <div class="mt-2">
                                 <input type="password" placeholder="Contraseña"
@@ -161,8 +178,8 @@
 
                                     Facebook
                                 </button>
-
-                                <button
+ 
+                                <button onclick="validarcorreo(document.getElementById('email').value)"
                                     class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
 
                                     Google
@@ -201,7 +218,7 @@
         integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../static/src/js/nav.js"></script>
-    <script src="../static/src/js/datos/login.js"></script>
+    <script src="../static/src/js/datos/registro.js"></script>
 </body>
 
 </html>

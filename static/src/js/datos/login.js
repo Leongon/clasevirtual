@@ -30,7 +30,7 @@ function login () {
     console.log(datojson)
     axios({
         method: 'POST',
-        url: '/login',
+        url: '/apiLogin',
         data: datojson
     })
         .then(res => {
@@ -71,90 +71,6 @@ $.validator.setDefaults( {
              required: "Por favor ingresa una contraseña",
              minlength: "Tu contraseña debe ser de no menos de 5 caracteres de longitud"
           },
-          
-       },
-       errorElement: "em",
-       errorPlacement: function (error, element) {
-          // Add the `help-block` class to the error element
-          error.addClass("help-block");
- 
-          if (element.prop( "type" ) === "checkbox") {
-             error.insertAfter(element.parent("label") );
-          } else {
-             error.insertAfter(element);
-          }
-       }
-    });
- });
-
- $(document).ready(function(){
-    $('#form_registro').validate({
-       rules: {
-           
-        Nombre: {
-            required: true,
-            
-
-         },
-         Apellido: {
-            required: true
-         }, 
-         tel: {
-            required: true,
-            number: true,
-            rangelength:[9,9]
-         }, 
-          email:{
-             required: true,
-             
-          },
-          Usuario:{
-            required: true,
-            minlength: 5
-          },
-          pass: {
-             required: true,
-             minlength: 6,    
-          },
-          pass_confirmar: {
-            required: true,
-            minlength: 6,
-            equalTo: "#pass"
-         },
-          agree: "required"
-       },
-       messages: {
-        Nombre: {
-            required: "Por favor llene sus Nombres",
-         },
-         Usuario: {
-            required: "Por favor llene el campo Usuario",
-            minlength:"Tu Usuario debe se mayor de 5 caracteres de longitud"
-         },
-         Apellido: {
-            required: "Por favor llene sus Apellidos",
-         },
-         tel:{
-            required:"ingrese su numero celular",
-            number: "Solo acepta numeros ",
-            rangelength:" ingrese su nuemero celular de 9 digitos"
-          },      
-         
-          email: {
-             required: "ingrese su Correo electronico",
-             email:"Correo electronico invalido"
-          },
-          
-          pass: {
-             required: "Por favor ingresa una contraseña",
-             minlength: "Tu Contraseña debe se mayor de 6 caracteres de longitud"
-          },
-          pass_confirmar: {
-            required: "Ingresa un password",
-            minlength: "Tu Contraseña debe se mayor de 6 caracteres de longitud",
-            equalTo: "Por favor ingresa la misma contraseña de arriba"
-         },
-
           
        },
        errorElement: "em",
