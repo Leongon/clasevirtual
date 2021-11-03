@@ -38,7 +38,6 @@ def inicio():
 def apiLogin():
     try: 
         sql="SELECT * FROM dbDesire.usuarios where (usuario = '{0}' or correo = '{1}' or telefono= '{2}') and pass = '{3}'".format(request.json['usuario'],request.json['correo'],request.json['telefono'],request.json['pass'])
-        print(sql)
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
@@ -139,7 +138,6 @@ def apiRegistro():
         resUsuario = apileerUsuario(request.json['usuario'])
         resCorreo = apileerCorreo(request.json['correo'])
         resTelefono = apileerTelefono(request.json['telefono'])
-        print(resUsuario,resCorreo,resTelefono)
 
         if resUsuario['success'] and resCorreo['success'] and resTelefono['success'] != True:
             sql = """INSERT INTO dbDesire.usuarios (usuario, pass, nombres, apellidos, correo, telefono, fkrol, estado) 
