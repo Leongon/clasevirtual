@@ -25,7 +25,7 @@ def paginanoencontrada(e):
 @app.route('/apiLogin', methods=['POST'])
 def apiLogin():
     try: 
-        sql="SELECT * FROM dbDesire.usuarios where usuario = '{0}' and pass = '{1}'".format(request.json['usuario'],request.json['pass'])
+        sql="SELECT * FROM dbDesire.usuarios where (usuario = '{0}' or correo = '{1}' or telefono= '{2}') and pass = '{3}'".format(request.json['usuario'],request.json['correo'],request.json['telefono'],request.json['pass'])
         print(sql)
         conn = conexion.connect()
         cursor = conn.cursor()
@@ -35,17 +35,18 @@ def apiLogin():
             return jsonify("Bienvenido")
         else:
             return jsonify("No existe el usuario o la contraseña es incorrecta")
-
     except:
         return jsonify("Error en la base de datos contacta con el administrador")
 @app.route('/apiSearchUsuario', methods=['POST'])
 def apiSearchUsuario():
     try:
         sql="SELECT usuario FROM dbDesire.usuarios where usuario = '{0}'".format(request.json['usuario'])
+        print(sql)
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
-        datos=cursor.fetchall()              
+        datos=cursor.fetchall()
+        print(datos)              
         if not len(datos) == 0:
             return {"success" : True, "msj": "Usuario ya existe"}
         else:
@@ -126,8 +127,9 @@ def apiRegistro():
         resUsuario = apileerUsuario(request.json['usuario'])
         resCorreo = apileerCorreo(request.json['correo'])
         resTelefono = apileerTelefono(request.json['telefono'])
+        print(resUsuario,resCorreo,resTelefono)
 
-        if resUsuario['success'] & resCorreo['success'] & resTelefono['success'] != True:
+        if resUsuario['success'] and resCorreo['success'] and resTelefono['success'] != True:
             sql = """INSERT INTO dbDesire.usuarios (usuario, pass, nombres, apellidos, correo, telefono, fkrol, estado) 
             VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','1','1');""".format(request.json['usuario'],request.json['pass'],request.json['nombres'],request.json['apellidos'],request.json['correo'],request.json['telefono'])
             conn = conexion.connect()
@@ -136,7 +138,7 @@ def apiRegistro():
             conn.commit()
             return jsonify("Registro correcto")
         else:
-            return jsonify("Esto no deberia de salir porq ya estamos validando en las apis xd y no deberias poder verlo")
+            return jsonify(resUsuario['msj'],resCorreo['msj'],resTelefono['msj'])
 
     except Exception as ex:
             raise ex
