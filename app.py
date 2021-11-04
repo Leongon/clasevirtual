@@ -1,4 +1,3 @@
-from re import U
 from flask import Flask, render_template, request, make_response, jsonify, redirect, session, escape, url_for
 from flask.json import JSONEncoder
 from flaskext.mysql import MySQL
@@ -39,12 +38,13 @@ def inicio():
 @app.route('/apiLogin', methods=['POST', 'GET'])
 def apiLogin():
     try: 
-        sql="SELECT * FROM dbDesire.usuarios where (usuario = '{0}' or correo = '{1}' or telefono= '{2}') and pass = '{3}'".format(request.json['usuario'],request.json['correo'],request.json['telefono'],request.json['pass'])
+        sql="SELECT * FROM dbDesire.usuarios where (usuario = '{0}' or correo = '{0}' or telefono= '{0}') and pass = '{1}'".format(request.json['usuario'],request.json['pass'])
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
         datos=cursor.fetchall()        
         if not len(datos) == 0:
+            
             session["usuario"]= datos[0][1]
             return redirect(url_for("panel"))
         else:
