@@ -12,13 +12,17 @@ app.secret_key = "@112"
 conexion = MySQL(app)
 # Routeo de paginas
 @app.route("/")
-def index():
+def index():    
     return render_template("index.html")
 @app.route("/login")
 def login():
     if "usuario" in session:
         return render_template("panel.html")
     return render_template("login.html")
+@app.route("/logout")
+def logout():
+    session.clear();
+    return render_template("index.html")
 def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 @app.route('/registrar')
