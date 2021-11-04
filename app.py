@@ -16,17 +16,21 @@ def index():
     return render_template("index.html")
 @app.route("/login")
 def login():
+    if "usuario" in session:
+        return render_template("panel.html")
     return render_template("login.html")
 def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 @app.route('/registrar')
 def registrar():
+    if "usuario" in session:
+        return render_template("panel.html")
     return render_template("registrar.html")
 @app.route('/panel')
 def panel():
     if "usuario" in session:
         return render_template("panel.html")
-    return "No esta logeado"
+    return render_template("registrar.html")
 @app.route('/curso')
 def curso():
     return render_template("Curso.html")
@@ -44,9 +48,8 @@ def apiLogin():
         cursor.execute(sql)
         datos=cursor.fetchall()        
         if not len(datos) == 0:
-            
             session["usuario"]= datos[0][1]
-            return redirect(url_for("panel"))
+            return jsonify("Bienvenido")
         else:
             return jsonify("No existe el usuario o la contraseña es incorrecta")
     except:
