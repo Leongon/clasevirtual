@@ -1,22 +1,26 @@
-import re
-from flask import Flask, render_template, request, make_response, jsonify, redirect
+from flask import Flask, render_template, request, make_response, jsonify, redirect, session, escape
 from flask.json import JSONEncoder
 from flaskext.mysql import MySQL
 from pymysql import cursors
 from pymysql.cursors import Cursor
 from werkzeug.wrappers import response
 from config import config
-
 # inicio de la app
 app = Flask(__name__)
+app.secret_key = "@112"
 # Inicio para la conexion a la DB
 conexion = MySQL(app)
 # Routeo de paginas
 @app.route("/")
 def index():
     return render_template("index.html")
+@app.route("/bienvenido")
+def bienvenido():
+    if "usuario" in session:
+        return "Estas logueado bienvenido %s" % escape(session["usuario"])
+    return "Logueate prro"
 @app.route("/login")
-def inventario():
+def login():
     return render_template("login.html")
 def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
@@ -41,9 +45,10 @@ def apiLogin():
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
-        datos=cursor.fetchall()
+        datos=cursor.fetchall()        
         if not len(datos) == 0:
-            return jsonify("Bienvenido")
+            session["usuario"]= datos[0][1]
+            return redirect('/bienvenido')
         else:
             return jsonify("No existe el usuario o la contraseña es incorrecta")
     except:

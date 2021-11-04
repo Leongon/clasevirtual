@@ -1,6 +1,4 @@
 var formlogin = document.getElementById("form");
-
-
 /*
 form.addEventListener("submit",function(e){
     
@@ -23,10 +21,9 @@ form.addEventListener("submit",function(e){
 
 })
 */
-
 function login () {
     var datos = new FormData(formlogin);
-    var datojson = { "usuario": datos.get("email"), "pass": datos.get("pass") }
+    var datojson = { "usuario": datos.get("email"), "correo" : "", "telefono" : "",  "pass": datos.get("pass") }
     console.log(datojson)
     axios({
         method: 'POST',
@@ -43,7 +40,6 @@ function login () {
             }
         })
 }
-
 $.validator.setDefaults( {
     submitHandler: function () {
        login()
@@ -65,13 +61,11 @@ $.validator.setDefaults( {
        messages: {
           email: {
              required: "ingrese su usuario",
-          },
-          
+          },          
           pass: {
              required: "Por favor ingresa una contraseña",
              minlength: "Tu contraseña debe ser de no menos de 5 caracteres de longitud"
-          },
-          
+          },          
        },
        errorElement: "em",
        errorPlacement: function (error, element) {

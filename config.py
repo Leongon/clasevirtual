@@ -4,7 +4,6 @@ class DevelopmentConfig():
     MYSQL_DATABASE_USER='root'
     MYSQL_DATABASE_PASSWORD=''
     MYSQL_DATABASE_DB='dbdesire'
-
 config ={
     'development':DevelopmentConfig
 }
