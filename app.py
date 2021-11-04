@@ -17,7 +17,7 @@ def index():
 @app.route("/bienvenido")
 def bienvenido():
     if "usuario" in session:
-        return "Estas logueado bienvenido %s" % escape(session["usuario"])
+        return render_template("panel.html")
     return "Logueate prro"
 @app.route("/login")
 def login():
