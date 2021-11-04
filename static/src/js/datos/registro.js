@@ -5,7 +5,6 @@ $(document).ready(function () {
     $("#Usuario").keyup(function () {
         var texto_escrito = $(this).val();
         console.log($(":text#Usuario").val().length)
-
         if($(":text#Usuario").val().length>=5){
             var datos = new FormData(formRe);
             var datojson = { "usuario": datos.get("Usuario") }
@@ -33,17 +32,12 @@ $(document).ready(function () {
 /*Correo*/
 $(document).ready(function () {
     $("#email").keyup(function () {
-
         var email=document.getElementById("email").value;
-
-        
             var expReg= /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
             var esValido=expReg.test(email);
             console.log(esValido)
             if(esValido==true){
                 console.log("valido")
-            
-        
             var datos = new FormData(formRe);
             var datojson = { "correo": datos.get("email") }
             axios({
@@ -144,6 +138,7 @@ $(document).ready(function () {
             },
             email: {
                 required: true,
+                email:true
 
             },
             Usuario: {
