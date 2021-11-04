@@ -137,9 +137,7 @@
                     <div
                         class="w-full rounded-3xl  border-gray-300 px-7 py-5 shadow-md border-4 border-green-600 border-opacity-40 ">
                         <fieldset>
-                            <h1 class="font-semibold text-center text-white p-2 ">Escoga un usuario, correo y Contraseña
-                                para su registro
-                            </h1>
+                            <h1 class="font-semibold text-center text-white p-2 ">Escoga un usuario</h1>
                             <!--Usuario-->
                             <div class="relative flex w-full flex-wrap items-stretch mb-3">
                                 <input type="text" placeholder="Usuario"
@@ -151,6 +149,18 @@
                                 </span>
                                 <div class="prob_usu"></div>
                             </div>
+                            
+                            <button 
+                                class="conU cursor-not-allowed next bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6
+                                            py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1
+                                            mb-1 ease-linear transition-all duration-150" type="button" disabled>
+                                            Continuar
+                            </button>
+                        </fieldset>
+                        <fieldset>
+                            <h1 class="font-semibold text-center text-white p-2 ">Escoga un correo y Contraseña
+                                para su registro
+                            </h1>
                             
                             <!--email-->
                             <div class="relative flex w-full flex-wrap items-stretch mb-3">
@@ -183,11 +193,16 @@
                                     <i class="fas fa-unlock""></i>
                                 </span>
                             </div>
+                            <button
+                                class="previous bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">
+                                Anterior
+                            </button>
 
                             <button 
-                                class=" next bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6
+                                class="conL cursor-not-allowed next bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6
                                             py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1
-                                            mb-1 ease-linear transition-all duration-150" type="button">
+                                            mb-1 ease-linear transition-all duration-150" type="button" disabled>
                                             Continuar
                             </button>
                         </fieldset>
@@ -231,21 +246,20 @@
                             <div class="relative flex w-full flex-wrap items-stretch mb-3">
                                 <input type="text" placeholder="Numero Celular"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="tel">
+                                    name="tel" id="tel">
                                 <span
                                     class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
                                     <i class="fas fa-phone"></i>
                                 </span>
                                 <div class="prob_tel"></div>
                             </div>
-                            <button
-                                class="previous bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            <button class="previous bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                                 type="button">
                                 Anterior
                             </button>
                             <button
-                                class="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                type="submit">
+                                class="conT cursor-not-allowed bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="submit" disabled>
                                 Registrar
                             </button>
                         </fieldset>
@@ -262,8 +276,6 @@
     <!-- component -->
     <div>
     </div>
-
-
 
     <script src="../static/src/js/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
