@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, make_response, jsonify, redirect, session, escape
+from re import U
+from flask import Flask, render_template, request, make_response, jsonify, redirect, session, escape, url_for
 from flask.json import JSONEncoder
 from flaskext.mysql import MySQL
 from pymysql import cursors
@@ -14,11 +15,6 @@ conexion = MySQL(app)
 @app.route("/")
 def index():
     return render_template("index.html")
-@app.route("/bienvenido")
-def bienvenido():
-    if "usuario" in session:
-        return render_template("panel.html")
-    return "Logueate prro"
 @app.route("/login")
 def login():
     return render_template("login.html")
@@ -29,7 +25,9 @@ def registrar():
     return render_template("registrar.html")
 @app.route('/panel')
 def panel():
-    return render_template("panel.html")
+    if "usuario" in session:
+        return render_template("panel.html")
+    return "No esta logeado"
 @app.route('/curso')
 def curso():
     return render_template("Curso.html")
@@ -38,7 +36,7 @@ def curso():
 def inicio():
     return render_template("inicio.html")    
 # Controladores
-@app.route('/apiLogin', methods=['POST'])
+@app.route('/apiLogin', methods=['POST', 'GET'])
 def apiLogin():
     try: 
         sql="SELECT * FROM dbDesire.usuarios where (usuario = '{0}' or correo = '{1}' or telefono= '{2}') and pass = '{3}'".format(request.json['usuario'],request.json['correo'],request.json['telefono'],request.json['pass'])
@@ -48,7 +46,7 @@ def apiLogin():
         datos=cursor.fetchall()        
         if not len(datos) == 0:
             session["usuario"]= datos[0][1]
-            return redirect('/bienvenido')
+            return redirect(url_for("panel"))
         else:
             return jsonify("No existe el usuario o la contraseña es incorrecta")
     except:
