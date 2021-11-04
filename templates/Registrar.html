@@ -10,10 +10,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="../static/src/css/scroll.css">
 
-    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
 </head>
 
-<body>
+<body style="background-image: url('../static/src/img/header.png');">
+
+    <style>
+        #form_registro fieldset:not(:first-of-type) {
+            display: none;
+        }
+    </style>
+
     <!-- navbar goes here -->
     <nav class="bg-gray-800 tex-color ">
 
@@ -22,13 +38,15 @@
                 <div class="flex space-x-4">
                     <!-- logo -->
                     <div>
-                        <div class="text-center mt-2 ">                   
+                        <div class="text-center mt-2 ">
                             <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                                Disceri
-                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-                                    Music
-                                </span>
+                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+                                    href="#">
+                                    Disceri
+                                    <span
+                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                                        Music
+                                    </span>
                                 </a>
                             </h1>
                         </div>
@@ -74,7 +92,7 @@
         <div class="mobile-menu hidden md:hidden">
             <a href="/"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-            
+
             <a href="/curso"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
             <a href="#"
@@ -88,119 +106,156 @@
         </div>
     </nav>
     <!-- Contenido aqui -->
-    <div class="login">
+    <div class="registro">
         <div class="alert"></div>
         <!-- component -->
         <!-- This is an example component -->
-        <div class="font-sans">
+        <div class="pr-12 pl-12 pt-5 pb -5 progress relative">
+            <div class="flex mb-2 items-center justify-between">
+                <div>
+                    <span
+                        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-blue-200">
+                        Progrso de registro
+                    </span>
+                </div>
+                <div class="text-right">
+                    <span class="progress-bar font-semibold inline-block text-blue-600">
+
+                    </span>
+                </div>
+            </div>
+            <div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200">
+                <div style="width:30%"
+                    class=" progress-bar shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500">
+                </div>
+            </div>
+        </div>
+
+        <form id="form_registro" novalidate action="action.php" method="post">
             <div class="mt-8 min-h-3/4 flex flex-col sm:justify-center items-center">
                 <div class="sm:max-w-sm w-full">
                     <div
-                        class="w-full rounded-3xl border-gray-300  px-7 py-5 shadow-md border-4 border-green-600 border-opacity-40 ">
-                        <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
-                            Login
-                        </label>
-                        <form id="form_registro">
-                            <div>
-                                <input type="text" placeholder="Nombre"
-                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="Nombre">
-                            </div>
-                            <div id="resul"></div>
-
-                            <div class="mt-2">
-                                <input type="text" placeholder="Apellido"
-                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="Apellido">
-                            </div class="mt-2">
-
-                            <div class="mt-2">
-                                <input type="text" placeholder="Telefono celular"
-                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="tel" id="tel">
-                            </div class="mt-2">
-                            <div class="prob_tel"></div>
-
-                            <div class="mt-2">
-                                <input type="email" placeholder="Correo electronico"
-                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="email" id="email" required>
-                            </div>
-                            <div class="prob_co"></div>
-
-                            <div class="mt-2">
+                        class="w-full rounded-3xl  border-gray-300 px-7 py-5 shadow-md border-4 border-green-600 border-opacity-40 ">
+                        <fieldset>
+                            <h1 class="font-semibold text-center text-white p-2 ">Escoga un usuario, correo y Contraseña
+                                para su registro
+                            </h1>
+                            <!--Usuario-->
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
                                 <input type="text" placeholder="Usuario"
                                     class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    name="Usuario"id="Usuario">
-                                <div class="prob_usu">
-
-                                </div>
+                                    name="Usuario" id="Usuario">
+                                <span
+                                    class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                <div class="prob_usu"></div>
                             </div>
-
-
-                            <div class="mt-2">
+                            
+                            <!--email-->
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                <input type="text" placeholder="Correo electronico"
+                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                                    name="email" id="email" >
+                                <span
+                                    class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                                <div class="prob_co"></div>
+                            </div>
+                            <!--Contraseña-->
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                    <input type="password" placeholder="Contraseña"
+                                        class=" p-5 mt-1 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                                        name="pass" id="pass">
+                                    <span
+                                        class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                        <i class="fas fa-unlock""></i>
+                                    </span>
+                            </div>
+                            <!--Repetir contraseña-->
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
                                 <input type="password" placeholder="Contraseña"
                                     class=" p-5 mt-1 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                    id="pass" name="pass">
-                            </div>
-                            <div class="mt-2">
-                                <input type="password" placeholder="Confirmar contraseña"
-                                    class=" p-5 mt-1 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
                                     name="pass_confirmar">
+                                <span
+                                    class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                    <i class="fas fa-unlock""></i>
+                                </span>
                             </div>
 
-                            <div class="mt-7 flex">
-                                <div class="w-full text-right">
-                                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="#">
-                                        ¿Olvidó su contraseña?
-                                    </a>
-                                </div>
+                            <button 
+                                class=" next bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6
+                                            py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1
+                                            mb-1 ease-linear transition-all duration-150" type="button">
+                                            Continuar
+                            </button>
+                        </fieldset>
+                        <fieldset>
+                            <h1 class="font-semibold text-center p-2 text-white ">Nombre y apellido para continuar con
+                                su registro
+                            </h1>
+                            <!--NOMBRE-->
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                <input type="text" placeholder="Nombres"
+                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                                    name="Nombre">
+                                <span
+                                    class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                    <i class="fas fa-signature"></i>
+                                </span>
                             </div>
-
-                            <div class="mt-7">
-                                <button type="submit"
-                                    class="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                                    Login
-                                </button>
+                            <!--APELLIDOS-->
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                <input type="text" placeholder="Apelidos"
+                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                                    name="Apellido">
+                                <span
+                                    class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                    <i class="fas fa-signature"></i>
+                                </span>
                             </div>
-                            <div class="flex mt-7 items-center text-center">
-                                <hr class="border-gray-300 border-1 w-full rounded-md">
-                                <label class="block font-medium text-sm text-gray-600 w-full">
-                                    Accede con
-                                </label>
-                                <hr class="border-gray-300 border-1 w-full rounded-md">
-
+                            <button
+                                class="previous bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">
+                                Anterior
+                            </button>
+                            <button
+                                class="next bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button" >
+                                Continuar
+                            </button>
+                        </fieldset>
+                        <fieldset>
+                            <h1 class="font-semibold text-center p-2 text-white">escriba su numero de telefono</h1>
+                            <div class="relative flex w-full flex-wrap items-stretch mb-3">
+                                <input type="text" placeholder="Numero Celular"
+                                    class="mt-1 p-5 block w-full border-none h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+                                    name="tel">
+                                <span
+                                    class="z-10 h-full leading-snug font-normal absolute text-center text-blueGray-300 absolute bg-transparent rounded text-base items-center justify-center w-8 right-0 pr-3 py-3">
+                                    <i class="fas fa-phone"></i>
+                                </span>
+                                <div class="prob_tel"></div>
                             </div>
-
-                            <div class="flex mt-7 justify-center w-full">
-                                <button
-                                    class="mr-5 bg-blue-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-
-                                    Facebook
-                                </button>
- 
-                                <button onclick="validarcorreo(document.getElementById('email').value)"
-                                    class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-
-                                    Google
-                                </button>
-                            </div>
-
-                            <div class="mt-7">
-                                <div class="flex justify-center items-center">
-                                    <label class="mr-2">¿Ya tienes una cuenta?</label>
-                                    <a href="/login"
-                                        class=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
-                                        Ingresar
-                                    </a>
-                                </div>
-                            </div>
-                        </form>
+                            <button
+                                class="previous bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">
+                                Anterior
+                            </button>
+                            <button
+                                class="bg-blue-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="submit">
+                                Registrar
+                            </button>
+                        </fieldset>
                     </div>
                 </div>
             </div>
+        </form>
 
-        </div>
+
+
     </div>
 
 
@@ -219,6 +274,37 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../static/src/js/nav.js"></script>
     <script src="../static/src/js/datos/registro.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var current = 1, current_step, next_step, steps;
+            steps = $("fieldset").length;
+            $(".next").click(function () {
+                current_step = $(this).parent();
+                next_step = $(this).parent().next();
+                next_step.show();
+                current_step.hide();
+                setProgressBar(++current);
+            });
+            $(".previous").click(function () {
+                current_step = $(this).parent();
+                next_step = $(this).parent().prev();
+                next_step.show();
+                current_step.hide();
+                setProgressBar(--current);
+            });
+            setProgressBar(current);
+            // Change progress bar action
+            function setProgressBar(curStep) {
+                var percent = parseFloat(100 / steps) * curStep;
+                percent = percent.toFixed();
+                $(".progress-bar")
+                    .css("width", percent + "%")
+                /* .html(percent + "%");*/
+            }
+        });
+    </script>
 </body>
 
 </html>
