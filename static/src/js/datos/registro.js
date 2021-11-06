@@ -1,5 +1,4 @@
 var formRe = document.getElementById("form_registro");
-
 /*USUARIO*/
 $(document).ready(function () {
     $("#Usuario").keyup(function () {
@@ -16,16 +15,20 @@ $(document).ready(function () {
             .then(res => {
                     console.log(res.data.msj)
                     if (res.data.msj==="ok") {
-                        $(".prob_usu").html('<label style="color:green">El usuario esta disponible </label>')  
+                        $(".prob_usu").html('<label style="color:green">El usuario esta disponible </label>')
+                        $(".conU").removeClass("cursor-not-allowed");
+                        $('.conU').removeAttr('disabled');
                     } else {
                         $(".prob_usu").html('<label style="color:red">'+res.data.msj+'</label>')
+                        $(".conU").addClass("cursor-not-allowed");
+                        $('.conU').prop('disabled', true);
                 }
             })
         }else{
             $(".prob_usu").html('<label style="color:red"></label>')
+            $(".conU").addClass("cursor-not-allowed");
+            $('.conU').prop('disabled', true);
         }
-
-
     })
 })
 
@@ -38,9 +41,9 @@ $(document).ready(function () {
             console.log(esValido)
             if(esValido==true){
                 console.log("valido")
-            var datos = new FormData(formRe);
-            var datojson = { "correo": datos.get("email") }
-            axios({
+                var datos = new FormData(formRe);
+                var datojson = { "correo": datos.get("email") }
+                axios({
                 method: 'POST',
                 url: '/apiSearchCorreo',
                 data: datojson
@@ -49,13 +52,18 @@ $(document).ready(function () {
                     console.log(res.data.msj)
                     if (res.data.msj==="ok") {
                         $(".prob_co").html('<label style="color:green">El correo esta disponible</label>')
+                        $(".conL").removeClass("cursor-not-allowed");
+                        $('.conL').removeAttr('disabled');
                     } else {
                         $(".prob_co").html('<label style="color:red">'+res.data.msj+'</label>')
+                        $(".conL").addClass("cursor-not-allowed");
+                        $('.conL').prop('disabled', true);
                 }
             })
         }else{
             $(".prob_co").html('<label style="color:green"></label>')
-            
+            $(".conL").addClass("cursor-not-allowed");
+            $('.conL').prop('disabled', true);
         }
         
     })
@@ -66,7 +74,7 @@ $(document).ready(function () {
     $("#tel").keyup(function () {
 
         console.log($(":text#tel").val().length)
-        if($(":text#tel").val().length!=0){
+        if($(":text#tel").val().length==9){
             var datos = new FormData(formRe);
             var datojson = { "telefono": datos.get("tel") }
             console.log(datojson)
@@ -79,13 +87,19 @@ $(document).ready(function () {
                     console.log(res.data.msj)
                     if (res.data.msj==="ok") {
                         $(".prob_tel").html('<label style="color:green">El Numero cel esta disponible</label>')
+                        $(".conT").removeClass("cursor-not-allowed");
+                        $('.conT').removeAttr('disabled');
                     } else {
                         $(".prob_tel").html('<label style="color:red">'+res.data.msj+'</label>')
+                        $(".conU").addClass("cursor-not-allowed");
+                        $('.conU').prop('disabled', true);
                     }
                     
             })
         }else{
             $(".prob_tel").html('<label style="color:red"></label>')
+            $(".conU").addClass("cursor-not-allowed");
+            $('.conU').prop('disabled', true);
         }
 
 
@@ -134,7 +148,7 @@ $(document).ready(function () {
             tel: {
                 required: true,
                 number: true,
-                /*rangelength: [9, 9]*/
+                rangelength: [9, 9]
             },
             email: {
                 required: true,
@@ -170,7 +184,7 @@ $(document).ready(function () {
             tel: {
                 required: "ingrese su numero celular",
                 number: "Solo acepta numeros ",
-                /*rangelength: " ingrese su nuemero celular de 9 digitos"*/
+                rangelength: " ingrese su numero celular de 9 digitos"
             },
 
             email: {
