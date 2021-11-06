@@ -107,6 +107,7 @@
                     </h1>
                 </div>
                 <div id = "cursos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!--Aca modificas como se muestra los cursos-->
                     {% for user in usuarios %}
                     <div class="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col justify-center items-center">
                         <div>
@@ -118,6 +119,8 @@
                             <a name="" id="" class="btn btn-primary" href="/curso?curso={{user.usuario}}&profesor={{user.correo}}" role="button">Ir</a>
                         </div>
                     </div>
+                    <!--End-->
+                    
                     {% endfor %}
 
                 </div>
