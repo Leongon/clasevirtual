@@ -1,3 +1,4 @@
+import re
 from flask import Flask, render_template, request, make_response, jsonify, redirect, session, escape, url_for
 from flask.json import JSONEncoder
 from flaskext.mysql import MySQL
@@ -22,7 +23,7 @@ def login():
 @app.route("/logout")
 def logout():
     session.clear();
-    return render_template("index.html")
+    return redirect(url_for("index"))
 def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 @app.route('/registrar')
@@ -35,9 +36,29 @@ def panel():
     if "usuario" in session:
         return render_template("panel.html")
     return render_template("registrar.html")
-@app.route('/curso')
-def curso():
-    return render_template("Curso.html")
+@app.route('/cursos')
+def cursos():
+    try:
+        sql="SELECT * FROM dbdesire.usuarios where estado = '1'"
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()
+        usuarios=[]
+        for fila in datos:
+            producto={'id':fila[0],'usuario':fila[1],'pass':fila[3],'correo':fila[5]}
+            usuarios.append(producto)
+        conn.commit()        
+        return render_template("Cursos.html",usuarios=usuarios)
+    except:
+        conn.commit()
+        return jsonify({'mensaje':"Error en la base de datos"})
+    
+@app.route('/curso')    
+def curso():    
+    curse = request.args.get('curso', 'No tienes permiso para acceder')
+    profesor = request.args.get('profesor', '!')
+    return 'El curso es: {}, y el profesor es: {}'.format(curse, profesor)
         
 @app.route('/inicio')
 def inicio():
@@ -163,7 +184,6 @@ def apiRegistro():
     except Exception as ex:
             raise ex
 
-
 @app.route('/apiListarUsuarios')
 def apiListarUsuarios():
     try:
@@ -181,7 +201,6 @@ def apiListarUsuarios():
     except:
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
-
 
 if __name__ == "__main__":
     app.config.from_object(config['development'])
