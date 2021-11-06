@@ -39,17 +39,17 @@ def panel():
 @app.route('/cursos')
 def cursos():
     try:
-        sql="SELECT * FROM dbdesire.usuarios where estado = '1'"
+        sql="SELECT a.id,a.usuario,a.nombres,a.apellidos,c.curso,c.precio,d.nivel FROM usuarios a INNER JOIN cursousuario b on a.id=b.fkusuario INNER JOIN cursos c on b.fkcurso=c.idcursos INNER JOIN nivel d on c.fknivel=d.idnivel WHERE a.fkrol=2"
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
         datos=cursor.fetchall()
-        usuarios=[]
+        cursos=[]
         for fila in datos:
-            producto={'id':fila[0],'usuario':fila[1],'pass':fila[3],'correo':fila[5]}
-            usuarios.append(producto)
+            producto={'nombres':fila[2],'apellidos':fila[3],'curso':fila[4],'precio':fila[5],'nivel':fila[6]}
+            cursos.append(producto)
         conn.commit()        
-        return render_template("Cursos.html",usuarios=usuarios)
+        return render_template("Cursos.html",curso=cursos)
     except:
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
