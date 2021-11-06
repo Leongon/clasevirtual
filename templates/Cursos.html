@@ -6,22 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="../static/src/css/error.css">
 
     <link rel="stylesheet" href="../static/src/css/scroll.css">
 
     <title>Document</title>
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 </head>
 
-<body class="leading-normal tracking-normal text-indigo-400  bg-cover bg-fixed" style="background-image: url('../static/src/img/header.png');"> 
+<body class="leading-normal tracking-normal text-indigo-400  bg-cover bg-fixed"
+    style="background-image: url('../static/src/img/header.png');">
 
     <!-- navbar goes here -->
-    <nav class="bg-gray-800 tex-color ">
+    <nav class="tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
 
-        <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
             <div class="flex justify-between">
                 <div class="flex space-x-4">
                     <!-- logo -->
@@ -43,25 +46,35 @@
 
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
-                        <a href="/"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-home"></i>                            Inicio</a>
-                        <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-book"></i> Curso</a>
-                        <a href="#" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-                        <a href="#"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+                        <a href="/"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                                class="fas fa-home"></i> Inicio</a>
+                        <a href="/cursos"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                                class="fas fa-book"></i> Curso</a>
+                        <a href="#"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+                        <a href="#"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
                     </div>
                 </div>
 
                 <!-- secondary nav -->
-                {% if "usuario" in session:%}
-                <div class="hidden md:flex items-center space-x-1 gap-6">
-                    <h1 class="text-white text-lg">Bienvenido Nombre</h1>
-                    <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
-                </div>
-                {% else:%}
-                <div class="hidden md:flex items-center space-x-1">
-                    <a href="/login" class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-                    <a href="/registrar"
-                        class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
-                </div>
+                
+                    {% if "usuario" in session:%}
+                    <div class="hidden md:flex items-center space-x-1 gap-6">
+                        <h1 class="text-white text-lg">Bienvenido Nombre</h1>
+                        <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
+                                class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                    {% else:%}
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="/login"
+                            class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+                        <a href="/registrar"
+                            class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
+                    </div>
+                
                 {% endif %}
 
                 <!-- mobile button goes here -->
@@ -79,7 +92,20 @@
         </div>
 
         <!-- mobile menu -->
-        <div class="mobile-menu hidden md:hidden">
+        <div class="bg-gray-900 top-14 fixed mobile-menu hidden md:hidden">
+            {% if "usuario" in session:%}
+            <a href="/logout" class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Salir <i
+                    class="fas fa-sign-out-alt"></i></a>
+            {% else:%}
+            <a href="/login"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+            <a href="/registrar"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
+            {% endif %}
+        </div>
+        <!-- barra  menu abajo -->
+
+        <div class="fixed w-full  max-w-full text-center bg-gray-900 flex justify-center bottom-0 left-0 md:invisible">
             <a href="/"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
 
@@ -89,68 +115,67 @@
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
-            {% if "usuario" in session:%}
-              <a href="/logout" class="left-0 text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
-            {% else:%}
-            <a href="/login"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-            <a href="/registrar"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
-            {% endif %}    
         </div>
+
+
     </nav>
     <!-- Contenido aqui -->
-    <div class="login">
+    <div class="curso mt-24 mb-24 ">
         <div class="alert"></div>
         <!-- component -->
         <!-- This is an example component -->
-        <div class="font-sans">
-            <!-- component -->
-            <div class="bg-gray-800 pt-3">
-                <div class="rounded-tl-3xl bg-gradient-to-r from-blue-900 to-gray-800 p-4 shadow text-2xl text-white">
-                    <h3 class="font-bold pl-2">Curso</h3>
-                </div>
+        <div class=" flex items-center text-center font-sans pl-10 pr-10 grid grid-cols-1 ">
+            <!-- mis cursos -->
+            <div class="my-4">
+                <input type="search" class="text-white w-1/2 buscador font-semibold bg-gray-900 shadow rounded border-0 p-3" placeholder="Buscar curso...">
             </div>
-            <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-               <div id = "cursos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- cursos en general -->
+            <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
+                <div id="cursos" class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!--Aca modificas como se muestra los cursos-->
                     {% for Curso in curso%}
-                    <div class="flex justify-center items-center w-full">
-                        <div class="text-white bg-gray-800 shadow-md h-96 mx-3 rounded-3xl flex flex-col justify-around items-center overflow-hidden sm:flex-row sm:h-52 sm:w-3/5 md:w-96 " >
-                          <img class="h-1/2 w-full sm:h-full sm:w-1/2 object-cover" src="../static/src/img/C_Piano.jpg" alt="image" />
-                            <div class=" flex-1 w-full flex flex-col items-baseline justify-around h-1/2 pl-6 sm:h-full sm:items-baseline sm:w-1/2" >
-                            <div class="flex flex-col justify-start items-baseline">
-                                <span class="text-xs text-indigo-300 mt-0">Curso:</span>
-                              <h1 class="text-lg font-normal mb-0 font-sans">
-                                {{ Curso.curso }}
-                              </h1>  
+                    <div class="item flex justify-center items-center w-full">
+                        <div
+                            class="text-white bg-gray-800 shadow-md h-96 mx-3 rounded-3xl flex flex-col justify-around items-center overflow-hidden sm:flex-row sm:h-52 sm:w-3/5 md:w-96 ">
+                            <img class="h-1/2 w-full sm:h-full sm:w-1/2 object-cover"
+                                src="../static/src/img/C_Piano.jpg" alt="image" />
+                            <div
+                                class=" flex-1 w-full flex flex-col items-baseline justify-around h-1/2 pl-6 sm:h-full sm:items-baseline sm:w-1/2">
+                                <div class="flex flex-col justify-start items-baseline">
+                                    <span class="text-xs text-indigo-300 mt-0">Curso:</span>
+                                    <h1 class="nomCurso text-lg font-normal mb-0 font-sans">
+                                        {{ Curso.curso }}
+                                    </h1>
+                                </div>
+                                <div class="flex">
+                                    <span class="text-xs text-indigo-300 mr-2">nivel:</span>
+                                    <p class="text-xs">
+                                        {{ Curso.nivel }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-indigo-300 mt-0">Profesor:</span>
+                                    <p class="text-xs">
+                                        {{ Curso.nombres}} {{ Curso.apellidos}}
+                                    </p>
+                                </div>
+                                <div class="w-full flex items-center">
+                                    <span class="text-xs text-indigo-300 mr-2">Precio:</span>
+                                    <h1 class="font-bold">{{ Curso.precio }}/S</h1>
+
+                                </div>
+                                <a name="" id="" class="btn btn-primary"
+                                    href="/curso?curso={{ Curso.curso }}&profesor={{ Curso.nombres}}  {{ Curso.apellidos}}"
+                                    role="button">
+                                    <div
+                                        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                                        <i class="fas fa-shopping-cart"></i>
+
+                                        agregar
+
+                                    </div>
+                                </a>
                             </div>
-                            <div class="flex">
-                                <span class="text-xs text-indigo-300 mr-2">nivel:</span>
-                                <p class="text-xs">
-                                    {{ Curso.nivel }}
-                                </p>
-                            </div>
-                            <div>
-                                <span class="text-xs text-indigo-300 mt-0">Profesor:</span>
-                                <p class="text-xs">
-                                    {{ Curso.nombres}}  {{ Curso.apellidos}} 
-                                </p>
-                            </div>
-                            <div class="w-full flex items-center">
-                              <span class="text-xs text-indigo-300 mr-2">Precio:</span>
-                              <h1 class="font-bold">{{ Curso.precio }}/S</h1>
-                              
-                            </div>
-                            <a name="" id="" class="btn btn-primary" href="/curso?curso={{ Curso.curso }}&profesor={{ Curso.nombres}}  {{ Curso.apellidos}}" role="button">
-                            <div class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
-                                <i class="fas fa-shopping-cart"></i>
-                                
-                                    agregar
-                                
-                            </div>
-                            </a>
-                          </div>
                         </div>
                     </div>
                     {% endfor %}
@@ -159,7 +184,7 @@
 
         </div>
     </div>
-    
+
     <script src="../static/src/js/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
         integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
@@ -169,6 +194,26 @@
         integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../static/src/js/datos/login.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.buscador').keyup(function () {
+                var nombres = $('.nomCurso');
+                var buscando = $(this).val();
+                var item = '';
+                for (var i = 0; i < nombres.length; i++) {
+                    item = $(nombres[i]).html().toLowerCase();
+                    for (var x = 0; x < item.length; x++) {
+                        if (buscando.length == 0 || item.indexOf(buscando) > -1) {
+                            $(nombres[i]).parents('.item').show();
+                        } else {
+                            $(nombres[i]).parents('.item').hide();
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
 
 </body>

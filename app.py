@@ -16,6 +16,8 @@ def index():
     return render_template("index.html")
 @app.route("/login")
 def login():
+    if "usuario" in session:
+        return render_template("cursos.html")
     return render_template("login.html")
 @app.route("/logout")
 def logout():
@@ -25,6 +27,8 @@ def paginanoencontrada(e):
     return "<h1>Error 404</h1><h2>La pagina que usted desea visualizar no existe o es incorrecta</h2>"
 @app.route('/registrar')
 def registrar():
+    if "usuario" in session:
+        return render_template("cursos.html")
     return render_template("registrar.html")
 @app.route('/panel')
 def panel():

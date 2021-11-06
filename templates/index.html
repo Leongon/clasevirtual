@@ -27,32 +27,15 @@
 
 <body class="leading-normal tracking-normal text-indigo-400 m-6 bg-cover bg-fixed"
   style="background-image: url('../static/src/img/header.png');">
-    <!-- mobile menu -->
-    <div class="mobile-menu bg-gray-800 hidden md:hidden">
-      <a href="/"
-          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-      <a href="/Cursos"
-          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
-      <a href="#"
-          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-      <a href="#"
-          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
-     {% if "usuario" in session:%}  
-     <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
-     {% else:%}  
-      <a href="/login"
-          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-      {% endif %}
-  </div>
-  <div class="h-full">
+  
+  <div class="h-full ">
     <!--Nav-->
     
-    <div class="flex w-full container mx-auto">
+    <div class="flex w-full container mx-auto border-b-2 border-fuchsia-600">
     
       <div class="w-full flex items-center justify-between">
         <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-          href="#">
-          Disceri<span
+          href="#">Disceri<span
             class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">Music</span>
         </a>
 
@@ -98,10 +81,29 @@
       </div>
     
     </div>
+      <!-- mobile menu -->
+  <div class="relative text-center w-full  max-w-full  mobile-menu bg-gray-800 hidden md:hidden overflow-y-hidden">
+    <a href="/"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+    <a href="/Cursos"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+    <a href="#"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+    <a href="#"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+   {% if "usuario" in session:%}  
+   <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
+   {% else:%}  
+    <a href="/login"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+    {% endif %}
+</div>
 
     <!--Main-->
     <div class="block mb-100 container pt-12 mx-auto flex flex-wrap flex-col md:flex-row items-center">
       <!--Left Col-->
+      {% if "usuario" in session:%}  
+      {% else:%}  
       <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
         <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
           Aprende Muisica ya!
@@ -243,6 +245,7 @@
         - Aprende Musica
         <a class="text-gray-500 no-underline hover:no-underline " href="/">Registrar</a>
       </div>
+      {% endif %}
     </div>
     
   </div>
