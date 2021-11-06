@@ -10,9 +10,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../static/src/css/scroll.css">
 
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 
 
@@ -55,24 +53,26 @@
 
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
-                        <a href="/"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-                        <a href="/curso"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+                        <a href="/"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-home"></i>                            Inicio</a>
+                        <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-book"></i> Curso</a>
+                        <a href="#" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+                        <a href="#"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
                     </div>
                 </div>
 
                 <!-- secondary nav -->
+                {% if "usuario" in session:%}
+                <div class="hidden md:flex items-center space-x-1 gap-6">
+                    <h1 class="text-white text-lg">Bienvenido Nombre</h1>
+                    <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
+                </div>
+                {% else:%}
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="/login"
-                        class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+                    <a href="/login" class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
                     <a href="/registrar"
                         class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
                 </div>
+                {% endif %}
 
                 <!-- mobile button goes here -->
                 <div class="md:hidden flex items-center">
@@ -93,16 +93,20 @@
             <a href="/"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
 
-            <a href="/curso"
+            <a href="/cursos"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+            {% if "usuario" in session:%}
+              <a href="/logout" class="left-0 text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
+            {% else:%}
             <a href="/login"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
             <a href="/registrar"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
+            {% endif %}    
         </div>
     </nav>
     <!-- Contenido aqui -->
@@ -115,7 +119,7 @@
                 <div>
                     <span
                         class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-white bg-blue-200">
-                        Progrso de registro
+                        Progreso de registro
                     </span>
                 </div>
                 <div class="text-right">

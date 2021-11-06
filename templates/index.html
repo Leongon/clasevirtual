@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Rainblur Landing Page Template: Tailwind Toolbox</title>
+  <title>Inicio</title>
   <meta name="description" content="" />
   <meta name="keywords" content="" />
 
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" />
   <!--Replace with your tailwind.css once created-->
   <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
@@ -30,15 +31,18 @@
     <div class="mobile-menu bg-gray-800 hidden md:hidden">
       <a href="/"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-      <a href="/Curso"
+      <a href="/Cursos"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
       <a href="#"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
       <a href="#"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+     {% if "usuario" in session:%}  
+     <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
+     {% else:%}  
       <a href="/login"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-
+      {% endif %}
   </div>
   <div class="h-full">
     <!--Nav-->
@@ -54,15 +58,15 @@
 
         <div class="flex w-1/2 justify-end content-center">
           <div class="hidden md:flex items-center space-x-1 text-red-500">
-            <a href="/"
-              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-            <a href="/curso" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
-            <a href="#"
-              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-            <a href="#"
-              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
-              <a href="/login"
-          class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+            <a href="/"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-home"></i> Inicio</a>
+                        <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-book"></i> Curso</a>
+                        <a href="#" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+                        <a href="#"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+            {% if "usuario" in session:%}
+            <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>  
+            {% else:%}    
+            <a href="/login" class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+            {% endif %}
           </div>
           <a class="inline-block text-blue-300 no-underline hover:text-pink-500 hover:text-underline text-center h-10 p-2 md:h-auto md:p-4 transform hover:scale-125 duration-300 ease-in-out"
             href="#">

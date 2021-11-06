@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../static/src/css/scroll.css">
 
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 </head>
 
@@ -24,13 +25,15 @@
                 <div class="flex space-x-4">
                     <!-- logo -->
                     <div>
-                        <div class="text-center mt-2 ">                   
+                        <div class="text-center mt-2 ">
                             <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-                                Disceri
-                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-                                    Music
-                                </span>
+                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+                                    href="#">
+                                    Disceri
+                                    <span
+                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
+                                        Music
+                                    </span>
                                 </a>
                             </h1>
                         </div>
@@ -39,24 +42,26 @@
 
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
-                        <a href="/"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-                         <a href="/curso"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+                        <a href="/"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-home"></i>                            Inicio</a>
+                        <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-book"></i> Curso</a>
+                        <a href="#" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+                        <a href="#"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
                     </div>
                 </div>
 
                 <!-- secondary nav -->
+                {% if "usuario" in session:%}
+                <div class="hidden md:flex items-center space-x-1 gap-6">
+                    <h1 class="text-white text-lg">Bienvenido Nombre</h1>
+                    <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
+                </div>
+                {% else:%}
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="/login"
-                        class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+                    <a href="/login" class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
                     <a href="/registrar"
                         class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
                 </div>
+                {% endif %}
 
                 <!-- mobile button goes here -->
                 <div class="md:hidden flex items-center">
@@ -76,17 +81,21 @@
         <div class="mobile-menu hidden md:hidden">
             <a href="/"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-            <a href="/curso"
+
+            <a href="/cursos"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+            {% if "usuario" in session:%}
+              <a href="/logout" class="left-0 text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
+            {% else:%}
             <a href="/login"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
             <a href="/registrar"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
-
+            {% endif %}    
         </div>
     </nav>
     <!-- Contenido aqui -->
