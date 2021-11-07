@@ -38,14 +38,14 @@ def panel():
 @app.route('/cursos')
 def cursos():
     try:
-        sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor;"
+        sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel, cursos.idcursos FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor;"
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
         datos=cursor.fetchall()
         cursos=[]
         for fila in datos:
-            producto={'usuario':fila[0],'nombres':fila[1],'apellidos':fila[2],'correo':fila[3],'telefono':fila[4],'curso':fila[5],'descripcion':fila[6],'precio':fila[7],'rol':fila[8],'nivel':fila[9]}
+            producto={'usuario':fila[0],'nombres':fila[1],'apellidos':fila[2],'correo':fila[3],'telefono':fila[4],'curso':fila[5],'descripcion':fila[6],'precio':fila[7],'rol':fila[8],'nivel':fila[9], 'idcurso' :fila[10]}
             cursos.append(producto)
         conn.commit()        
         return render_template("Cursos.html",curso=cursos)
