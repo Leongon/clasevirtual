@@ -57,8 +57,8 @@ def cursos():
 @app.route('/curso')    
 def curso():    
     curse = request.args.get('curso', 'No tienes permiso para acceder')
-    profesor = request.args.get('profesor', '!')
-    return 'El curso es: {}, y el profesor es: {}'.format(curse, profesor)
+    idcurse = request.args.get('idcurse', '!')
+    return 'El curso es: {}, y el id es: {}'.format(curse, idcurse)
         
 @app.route('/inicio')
 def inicio():
