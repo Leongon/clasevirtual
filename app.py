@@ -38,14 +38,14 @@ def panel():
 @app.route('/cursos')
 def cursos():
     try:
-        sql="SELECT a.id,a.usuario,a.nombres,a.apellidos,c.curso,c.precio,d.nivel FROM usuarios a INNER JOIN cursousuario b on a.id=b.fkusuario INNER JOIN cursos c on b.fkcurso=c.idcursos INNER JOIN nivel d on c.fknivel=d.idnivel WHERE a.fkrol=2"
+        sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor;"
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
         datos=cursor.fetchall()
         cursos=[]
         for fila in datos:
-            producto={'nombres':fila[2],'apellidos':fila[3],'curso':fila[4],'precio':fila[5],'nivel':fila[6]}
+            producto={'usuario':fila[0],'nombres':fila[1],'apellidos':fila[2],'correo':fila[3],'telefono':fila[4],'curso':fila[5],'descripcion':fila[6],'precio':fila[7],'rol':fila[8],'nivel':fila[9]}
             cursos.append(producto)
         conn.commit()        
         return render_template("Cursos.html",curso=cursos)
@@ -53,6 +53,7 @@ def cursos():
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
     
+
 @app.route('/curso')    
 def curso():    
     curse = request.args.get('curso', 'No tienes permiso para acceder')
