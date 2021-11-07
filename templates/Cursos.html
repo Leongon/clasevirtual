@@ -35,15 +35,12 @@
                                     href="#">
                                     Disceri
                                     <span
-                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-                                        Music
+                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-gray-500 to-purple-500">Music
                                     </span>
                                 </a>
                             </h1>
                         </div>
                     </div>
-
-
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
                         <a href="/"
@@ -63,7 +60,8 @@
                 
                     {% if "usuario" in session:%}
                     <div class="hidden md:flex items-center space-x-1 gap-6">
-                        <h1 class="text-white text-lg">Bienvenido Nombre</h1>
+                        <img src="../static/src/img/user.png" alt="..." class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
+                        <h1 class="text-white text-lg">Hola {{session["nombre"]}}</h1>
                         <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
                                 class="fas fa-sign-out-alt"></i></a>
                     </div>
@@ -121,7 +119,7 @@
     </nav>
     <!-- Contenido aqui -->
     <div class="curso mt-24 mb-24 ">
-        <div class="alert"></div>
+        <button class=" fixed bottom-0 right-0 mb-12 modal-open rounded-full h-24 w-24 flex items-center justify-center bg-yellow-500 text-white"  >Abrir Mis cursos</button>
         <!-- component -->
         <!-- This is an example component -->
         <div class=" flex items-center text-center font-sans pl-10 pr-10 grid grid-cols-1 ">
@@ -133,7 +131,7 @@
             <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4">
                 <div id="cursos" class=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!--Aca modificas como se muestra los cursos-->
-                    {% for Curso in curso%}
+                    {% for Curso in curso %}
                     <div class="item flex justify-center items-center w-full">
                         <div
                             class="text-white bg-gray-800 shadow-md h-96 mx-3 rounded-3xl flex flex-col justify-around items-center overflow-hidden sm:flex-row sm:h-52 sm:w-3/5 md:w-96 ">
@@ -185,6 +183,36 @@
         </div>
     </div>
 
+     <!--Modal-->
+  <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+    <div class="modal-overlay absolute w-full h-full" style="background-image: url('../static/src/img/header.png');"></div>
+    <div class="w-full h-full modal-container rounded shadow-lg z-50 overflow-y-auto">
+        <div class="tex-color w-full top-0 max-w-full bg-gray-900 width-f p-5">
+            <h3 class="text-lg leading-6 font-medium text-white">
+              Mis cursos
+            </h3>
+            <button type="button" class="fixed top-0 right-0  modal-close inline-flex items-center m-4 px-4 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Cerrar
+            </button> 
+        </div>
+        <div class="pt-4 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 px-4">
+            {% for Cursos in cursoalumnos %}
+            <!-- SMALL CARD ROUNDED -->
+            <div class="bg-gray-100 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
+              <img class="rounded-full w-16 h-16 object-cover" src="../static/src/img/C_Piano.jpg" alt="" />
+              <div class="flex flex-col justify-center">
+                <p class="text-gray-900 dark:text-gray-300 font-semibold">{{Cursos.curso}}</p>
+                <p class="text-black dark:text-gray-100 text-justify font-semibold">Nivel: {{Cursos.nivel}}</p>
+                <p class="text-black dark:text-gray-100 text-justify font-semibold">Profesor: {{Cursos.nombres}}</p>
+              </div>
+            </div>
+            {% endfor %}
+            <!-- END SMALL CARD ROUNDED -->
+          </div>
+
+    </div>
+  </div>
+
     <script src="../static/src/js/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
         integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
@@ -194,6 +222,51 @@
         integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="../static/src/js/datos/login.js"></script>
+
+    <script>
+        var openmodal = document.querySelectorAll('.modal-open')
+        for (var i = 0; i < openmodal.length; i++) {
+          openmodal[i].addEventListener('click', function(event){
+            event.preventDefault()
+            toggleModal()
+          })
+        }
+        
+        const overlay = document.querySelector('.modal-overlay')
+
+        /* click en cualquier parte de la pagina cierra el modal */
+
+        /*overlay.addEventListener('click', toggleModal)*/
+        
+        var closemodal = document.querySelectorAll('.modal-close')
+        for (var i = 0; i < closemodal.length; i++) {
+          closemodal[i].addEventListener('click', toggleModal)
+        }
+        
+        document.onkeydown = function(evt) {
+          evt = evt || window.event
+          var isEscape = false
+          if ("key" in evt) {
+            isEscape = (evt.key === "Escape" || evt.key === "Esc")
+          } else {
+            isEscape = (evt.keyCode === 27)
+          }
+          if (isEscape && document.body.classList.contains('modal-active')) {
+            toggleModal()
+          }
+        };
+        
+        
+        function toggleModal () {
+          const body = document.querySelector('body')
+          const modal = document.querySelector('.modal')
+          modal.classList.toggle('opacity-0')
+          modal.classList.toggle('pointer-events-none')
+          body.classList.toggle('modal-active')
+        }
+        
+         
+      </script>
 
     <script>
         $(document).ready(function () {

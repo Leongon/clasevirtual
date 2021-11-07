@@ -31,15 +31,12 @@
                                     href="#">
                                     Disceri
                                     <span
-                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-                                        Music
+                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-gray-500 to-purple-500">Music
                                     </span>
                                 </a>
                             </h1>
                         </div>
                     </div>
-
-
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
                         <a href="/"
@@ -59,7 +56,8 @@
                 
                     {% if "usuario" in session:%}
                     <div class="hidden md:flex items-center space-x-1 gap-6">
-                        <h1 class="text-white text-lg">Bienvenido Nombre</h1>
+                        <img src="../static/src/img/user.png" alt="..." class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
+                        <h1 class="text-white text-lg">Hola {{session["nombre"]}}</h1>
                         <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
                                 class="fas fa-sign-out-alt"></i></a>
                     </div>

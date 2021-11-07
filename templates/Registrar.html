@@ -29,9 +29,9 @@
     </style>
 
     <!-- navbar goes here -->
-    <nav class="bg-gray-800 tex-color ">
+    <nav class="tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
 
-        <div class="max-w-6xl mx-auto px-4">
+        <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
             <div class="flex justify-between">
                 <div class="flex space-x-4">
                     <!-- logo -->
@@ -42,36 +42,44 @@
                                     href="#">
                                     Disceri
                                     <span
-                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-                                        Music
+                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-gray-500 to-purple-500">Music
                                     </span>
                                 </a>
                             </h1>
                         </div>
                     </div>
-
-
                     <!-- primary nav -->
                     <div class="hidden md:flex items-center space-x-1 text-red-500">
-                        <a href="/"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-home"></i>                            Inicio</a>
-                        <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i class="fas fa-book"></i> Curso</a>
-                        <a href="#" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-                        <a href="#"class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+                        <a href="/"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                                class="fas fa-home"></i> Inicio</a>
+                        <a href="/cursos"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                                class="fas fa-book"></i> Curso</a>
+                        <a href="#"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+                        <a href="#"
+                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
                     </div>
                 </div>
 
                 <!-- secondary nav -->
-                {% if "usuario" in session:%}
-                <div class="hidden md:flex items-center space-x-1 gap-6">
-                    <h1 class="text-white text-lg">Bienvenido Nombre</h1>
-                    <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
-                </div>
-                {% else:%}
-                <div class="hidden md:flex items-center space-x-1">
-                    <a href="/login" class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-                    <a href="/registrar"
-                        class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
-                </div>
+                
+                    {% if "usuario" in session:%}
+                    <div class="hidden md:flex items-center space-x-1 gap-6">
+                        <img src="../static/src/img/user.png" alt="..." class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
+                        <h1 class="text-white text-lg">Hola {{session["nombre"]}}</h1>
+                        <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
+                                class="fas fa-sign-out-alt"></i></a>
+                    </div>
+                    {% else:%}
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="/login"
+                            class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+                        <a href="/registrar"
+                            class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
+                    </div>
+                
                 {% endif %}
 
                 <!-- mobile button goes here -->
@@ -89,7 +97,20 @@
         </div>
 
         <!-- mobile menu -->
-        <div class="mobile-menu hidden md:hidden">
+        <div class="bg-gray-900 top-14 fixed mobile-menu hidden md:hidden">
+            {% if "usuario" in session:%}
+            <a href="/logout" class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Salir <i
+                    class="fas fa-sign-out-alt"></i></a>
+            {% else:%}
+            <a href="/login"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+            <a href="/registrar"
+                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
+            {% endif %}
+        </div>
+        <!-- barra  menu abajo -->
+
+        <div class="fixed w-full  max-w-full text-center bg-gray-900 flex justify-center bottom-0 left-0 md:invisible">
             <a href="/"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
 
@@ -99,15 +120,9 @@
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
             <a href="#"
                 class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
-            {% if "usuario" in session:%}
-              <a href="/logout" class="left-0 text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i class="fas fa-sign-out-alt"></i></a>
-            {% else:%}
-            <a href="/login"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-            <a href="/registrar"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
-            {% endif %}    
         </div>
+
+
     </nav>
     <!-- Contenido aqui -->
     <div class="registro">
