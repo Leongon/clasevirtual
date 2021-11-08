@@ -38,17 +38,29 @@ def panel():
 def cursos():
     try:
         
-        sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel, cursos.idcursos FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor;"
+        sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel, cursos.idcursos FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor ;"
         conn = conexion.connect()
         cursor = conn.cursor()
         cursor.execute(sql)
         datos=cursor.fetchall()
-        cursos=[]
+        cursosTotal=[]
         for fila in datos:
             producto={'usuario':fila[0],'nombres':fila[1],'apellidos':fila[2],'correo':fila[3],'telefono':fila[4],'curso':fila[5],'descripcion':fila[6],'precio':fila[7],'rol':fila[8],'nivel':fila[9], 'idcurso' :fila[10]}
-            cursos.append(producto)
+            cursosTotal.append(producto)
         conn.commit()
+
         if "usuario" in session:
+            sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel, cursos.idcursos FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor WHERE usuarios.usuario='"+session["usuario"]+"' ;"
+            conn = conexion.connect()
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            datos=cursor.fetchall()
+            cursos=[]
+            for fila in datos:
+                producto={'usuario':fila[0],'nombres':fila[1],'apellidos':fila[2],'correo':fila[3],'telefono':fila[4],'curso':fila[5],'descripcion':fila[6],'precio':fila[7],'rol':fila[8],'nivel':fila[9], 'idcurso' :fila[10]}
+                cursos.append(producto)
+            conn.commit()
+
             sql1="SELECT a.id, a.usuario,c.curso,d.nivel,e.nombres  FROM usuarios a INNER JOIN cursoalumno b on a.id=b.fkusuario INNER JOIN cursos c on b.fkcurso = c.idcursos INNER JOIN nivel d on c.fknivel=d.idnivel INNER JOIN usuarios e on c.fkprofesor=e.id WHERE a.usuario='"+ session["usuario"] +"' "
             conn = conexion.connect()
             cursor = conn.cursor()
@@ -59,9 +71,9 @@ def cursos():
                 producto={'id':fila[0],'usuario':fila[1],'curso':fila[2],'nivel':fila[3],'nombres':fila[4]}
                 cursoalumno.append(producto)
             conn.commit()
-            return render_template("Cursos.html",curso=cursos,cursoalumnos=cursoalumno)
+            return render_template("Cursos.html",curso=cursosTotal,cursoalumnos=cursoalumno,cursoprofe=cursos)
         else:
-            return render_template("Cursos.html",curso=cursos)        
+            return render_template("Cursos.html",curso=cursosTotal)        
     except:
         conn.commit()
         return jsonify({'mensaje':"Error en la base de datos"})
