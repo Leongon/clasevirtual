@@ -121,18 +121,18 @@
     <div class="flex md:h-full md:relative fixed bg-gray-900 md:h-screen w-1/4 text-white invisible md:visible ">
       <ul class="flex-col mt-24 ml-9 list-none divide-y text-align: justify">
         <li class="pb-4 hover:text-blue-500"> 1 - <a class="list" href="https://player.vimeo.com/video/308645388?h=b6e3487c73">Introduccion</a></li>
-        <li class="pb-4 hover:text-blue-500"> 2 - <a class="list" href="">Pocicion de los dedos</a></li>
-        <li class="pb-4 hover:text-blue-500"> 3 - <a href="">Tecnicas de musica</a></li>
-        <li class="pb-4 hover:text-blue-500"> 4 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 5 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 6 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 7 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 8 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 9 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 10 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 11 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 12 - <a href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 13 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 2 - <a class="list" href="https://www.youtube.com/embed/X41HbufBhXw">Pocicion de los dedos</a></li>
+        <li class="pb-4 hover:text-blue-500"> 3 - <a class="list" href="">Tecnicas de musica</a></li>
+        <li class="pb-4 hover:text-blue-500"> 5 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 4 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 6 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 7 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 8 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 9 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 10 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 11 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 12 - <a class="list" href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 13 - <a class="list" href="">Solfeo</a></li>
       </ul>
     </div>
     <!-- contenido -->
@@ -161,8 +161,11 @@
   <script>
  $( ".list" ).click(function(e) {
   e.preventDefault();
+  $(".list").each(function(){
+    console.log(JSON.stringify($(this)))
+  })
 
-  var URLactual = $('.list').attr('href');
+  var URLactual = $(this).attr('href');
   $(".cambio").attr("src",URLactual);
   
   });
