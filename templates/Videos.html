@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  
+<link rel="stylesheet" href="../static/src/css/scroll.css">
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+  <title></title>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+</head>
+
+<body class="leading-normal tracking-normal text-indigo-400  bg-cover bg-fixed"
+  style="background-image: url('../static/src/img/header.png');">
+  <!-- navbar goes here -->
+  <nav class="tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
+
+    <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-4">
+          <!-- logo -->
+          <div>
+            <div class="text-center mt-2 ">
+              <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+                  href="#">
+                  Disceri
+                  <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-gray-500 to-purple-500">Music
+                  </span>
+                </a>
+              </h1>
+            </div>
+          </div>
+          <!-- primary nav -->
+          <div class="hidden md:flex items-center space-x-1 text-red-500">
+            <a href="/" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                class="fas fa-home"></i> Inicio</a>
+            <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                class="fas fa-book"></i> Curso</a>
+            <a href="#"
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+            <a href="#"
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+          </div>
+        </div>
+
+        <!-- secondary nav -->
+
+        {% if "usuario" in session: %}
+        <div class="hidden md:flex items-center space-x-1 gap-6">
+          <img src="../static/src/img/user.png" alt="..."
+            class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
+          <h1 class="text-white text-lg">Hola {{session["nombre"]}}</h1>
+          <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
+              class="fas fa-sign-out-alt"></i></a>
+        </div>
+        {% else:%}
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="/login" class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+          <a href="/registrar"
+            class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
+        </div>
+
+        {% endif %}
+
+        <!-- mobile button goes here -->
+        <div class="md:hidden flex items-center">
+          <button class="mobile-menu-button">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div class="bg-gray-900 top-14 fixed mobile-menu hidden md:hidden">
+      {% if "usuario" in session:%}
+      <a href="/logout"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Salir <i
+          class="fas fa-sign-out-alt"></i></a>
+      {% else:%}
+      <a href="/login"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+      <a href="/registrar"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
+      {% endif %}
+    </div>
+    <!-- barra  menu abajo -->
+
+    <div class="fixed w-full  max-w-full text-center bg-gray-900 flex justify-center bottom-0 left-0 md:invisible">
+      <a href="/"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+
+      <a href="/cursos"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+      <a href="#"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+      <a href="#"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+    </div>
+
+
+  </nav>
+  <!-- Contenido aqui -->
+  <div class="md:container flex ">
+    <!-- component -->
+    <div class="flex md:h-full md:relative fixed bg-gray-900 md:h-screen w-1/4 text-white invisible md:visible ">
+      <ul class="flex-col mt-24 ml-9 list-none divide-y text-align: justify">
+        <li class="pb-4 hover:text-blue-500"> 1 - <a class="list" href="https://player.vimeo.com/video/308645388?h=b6e3487c73">Introduccion</a></li>
+        <li class="pb-4 hover:text-blue-500"> 2 - <a class="list" href="">Pocicion de los dedos</a></li>
+        <li class="pb-4 hover:text-blue-500"> 3 - <a href="">Tecnicas de musica</a></li>
+        <li class="pb-4 hover:text-blue-500"> 4 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 5 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 6 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 7 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 8 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 9 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 10 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 11 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 12 - <a href="">Solfeo</a></li>
+        <li class="pb-4 hover:text-blue-500"> 13 - <a href="">Solfeo</a></li>
+      </ul>
+    </div>
+    <!-- contenido -->
+    <div class=" mt-48 md:mt-16 container flex md:relative fixed items-center justify-center max-w-7xl ">
+        <div class="flex fixed flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
+          <iframe class="cambio w-full h-40 md:h-96 " src="https://www.youtube.com/embed/X41HbufBhXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="flex fixed space-x-24 md:space-x-96 mt-52 md:mt-96">
+          <button class="radio text-center self-center p-2 w-24 px-4 rounded-lg cursor-pointer hover:opacity-75 hover:text-white bg-green-900">Atras</button>
+          <button class="radio text-center self-center py-2 px-4 rounded-lg cursor-pointer hover:opacity-75 bg-green-900 hover:text-white">Siguiente</button>
+        </div>
+    </div>
+  </div>
+
+
+  <script src="../static/src/js/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+    integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../static/src/js/nav.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"
+    integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../static/src/js/datos/login.js"></script>
+
+  <script>
+ $( ".list" ).click(function(e) {
+  e.preventDefault();
+
+  var URLactual = $('.list').attr('href');
+  $(".cambio").attr("src",URLactual);
+  
+  });
+  
+  </script>
+  </body>
+
+  </html>

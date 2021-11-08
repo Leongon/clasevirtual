@@ -31,9 +31,9 @@ def registrar():
     if "usuario" in session:
         return render_template("cursos.html")
     return render_template("registrar.html")
-@app.route('/perfil')
+@app.route('/video')
 def panel():
-    return render_template("perfil.html")
+    return render_template("Videos.html")
 @app.route('/cursos')
 def cursos():
     try:
