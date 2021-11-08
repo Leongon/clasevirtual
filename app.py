@@ -87,6 +87,7 @@ def apiLogin():
         if not len(datos) == 0:
             session["usuario"]= datos[0][1]
             session["nombre"]= datos[0][3]
+            session["rol"]= datos[0][7]
             return jsonify("Bienvenido")
         else:
             return jsonify("No existe el usuario o la contraseña es incorrecta")

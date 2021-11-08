@@ -1,148 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  <title>Tailwind CSS Modal</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">  
-  <style>
-    .modal {
-      transition: opacity 0.25s ease;
-    }
-    body.modal-active {
-      overflow-x: hidden;
-      overflow-y: visible !important;
-    }
-  </style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  
 </head>
-<body >
-  
-  <button class="modal-open bg-transparent border border-gray-500 hover:border-indigo-500 text-gray-500 hover:text-indigo-500 font-bold py-2 px-4 rounded-full">Open Modal</button>
-  
-  <!--Modal-->
-  <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
-    <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
-    
-    <div class="modal-container rounded shadow-lg z-50 overflow-y-auto">
-      <div class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
-        <!--svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-          <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-        </svg-->
-        <!--span class="text-sm">(Esc)</span-->
-      </div>
 
-      <!-- Add margin if you want to see some of the overlay behind the modal-->
-      <div class="modal-content text-left ">
-        <!--Title-->
-        <div class="flex justify-between items-center">
-          <!--p class="text-2xl font-bold">Mis cursos</p-->
-          <!--div class="modal-close cursor-pointer z-50">
-            <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-              <path d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"></path>
-            </svg>
-          </div-->
-        </div>
+<body style="font-family:Roboto">
 
-        <!--Body-->
-        <div class="flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-gray-900 text-white">
-            <div class="rounded-t mb-0 px-4 py-3 border-0">
-            <div class="flex flex-wrap items-center">
-                <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                <h3 class="font-semibold text-lg text-white">Mis Cursos</h3>
-                </div>
-            </div>
-            </div>
-            <div class="block w-full overflow-x-auto ">
-            <table class="items-center w-full bg-transparent border-collapse">
-                <thead>
-                <tr>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-800 text-white border-gray-700">Curso</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-800 text-white border-gray-700">precio</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-800 text-white border-gray-700">Estado</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-800 text-white border-gray-700">progreso</th>
-                    <th class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left bg-gray-800 text-white border-gray-700"></th>
-                </tr>
-                </thead>
+ 
 
-                <tbody>
-                <tr>
-                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                    <img src="../static/src/img/C_Piano.jpg" class="h-12 w-12 bg-white rounded-full border" alt="...">
-                    <span class="ml-3 font-bold text-white"> Piano </span></th>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">20 /s</td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                    <i class="fas fa-circle text-orange-500 mr-2"></i>Pendiente</td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><div class="flex items-center">
-                        <span class="mr-2">60%</span>
-                        <div class="relative w-full">
-                        <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                            <div style="width: 60%" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"></div>
-                        </div>
-                        </div>
-                    </div>
-                    </td>
-                    <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <a href="#pablo" class="text-blueGray-500 block py-1 px-3" onclick="openDropdown(event,'table-dark-1-dropdown')">
-                        <i class="fas fa-ellipsis-v"></i></a>
-                    <div class="hidden bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48" id="table-dark-1-dropdown">
-                        <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Another action</a><a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Something else here</a>
-                        <div class="h-0 my-2 border border-solid border-blueGray-100"></div>
-                        <a href="#pablo" class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">Seprated link</a>
-                    </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!--Footer-->
-        <div class="flex justify-end pt-2">
-          <button class="px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2">Action</button>
-          <button class="modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400">Close</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
 
-  <script>
-    var openmodal = document.querySelectorAll('.modal-open')
-    for (var i = 0; i < openmodal.length; i++) {
-      openmodal[i].addEventListener('click', function(event){
-    	event.preventDefault()
-    	toggleModal()
-      })
-    }
-    
-    const overlay = document.querySelector('.modal-overlay')
-    overlay.addEventListener('click', toggleModal)
-    
-    var closemodal = document.querySelectorAll('.modal-close')
-    for (var i = 0; i < closemodal.length; i++) {
-      closemodal[i].addEventListener('click', toggleModal)
-    }
-    
-    document.onkeydown = function(evt) {
-      evt = evt || window.event
-      var isEscape = false
-      if ("key" in evt) {
-    	isEscape = (evt.key === "Escape" || evt.key === "Esc")
-      } else {
-    	isEscape = (evt.keyCode === 27)
-      }
-      if (isEscape && document.body.classList.contains('modal-active')) {
-    	toggleModal()
-      }
-    };
-    
-    
-    function toggleModal () {
-      const body = document.querySelector('body')
-      const modal = document.querySelector('.modal')
-      modal.classList.toggle('opacity-0')
-      modal.classList.toggle('pointer-events-none')
-      body.classList.toggle('modal-active')
-    }
-    
-     
-  </script>
+
 </body>
+
 </html>
