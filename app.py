@@ -119,7 +119,6 @@ def curso():
                 urlpdf.append(pdf)
             conn.commit()   
         return render_template("Videos.html", curso = curso, urlvideo = urlvideo, urlpdf = urlpdf)
-        
 @app.route('/inicio')
 def inicio():
     return render_template("inicio.html")    
