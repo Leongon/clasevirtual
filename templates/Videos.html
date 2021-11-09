@@ -128,7 +128,7 @@
 
     <div class="bg-gray-800 h-screen flex flex-col items-center">
       <div class="flex mt-24 m-2 flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
-        <iframe class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src="https://www.youtube.com/embed/X41HbufBhXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="flex w-full gap-2">
         <button class="anterior text-white radio font-black text-2xl  text-center self-center w-full p-2 px-4 rounded-lg cursor-pointer hover:opacity-75 hover:text-white bg-yellow-400"><p class="m-5"><i class="fas fa-angle-double-left"></i> Anterior</p> </button>
@@ -170,11 +170,12 @@
     
     if (localStorage.getItem("objeG")){
       console.log("hola")
-    }else{
+      }
+    else{
       
-      guardarlocalstoge(1)
+    guardarlocalstoge(0)
     }
-
+    var currentActive = 0
     imprimirlocalstore()
     $( ".list" ).click(function(e) {
       e.preventDefault();
@@ -204,6 +205,7 @@
       let objeto=JSON.parse(localStorage.getItem("objeG"));
 
       a=objeto.indiceList
+      update(a)
 
       console.log(a)
 
@@ -231,7 +233,35 @@
         $(".listararchi").removeClass("visible")
       }
     }  
-/* const lista = document.querySelectorAll('.list');
+
+    $(".siguiente").click(function () {
+      currentActive++;
+      if (currentActive > $(".list").length) {
+        currentActive = $(".list").length
+      }
+      console.log(currentActive)
+      update(currentActive)
+    })
+    
+    $(".anterior").click(function () {
+      currentActive--;
+      if (currentActive < 0) {
+        currentActive = 0
+      }
+      console.log(currentActive)
+      update(currentActive)
+
+    })
+    function update(valor) {
+      $(".list").each(function (index) {
+        if (index >= 0 && index == valor) { //condicion para excluir el primer y el ultimo elemento de la lista
+          var URLactual = $(this).attr('href');
+          $(".cambio").attr("src", URLactual);
+        }
+      });
+
+    }
+    /* const lista = document.querySelectorAll('.list');
     update(0)
     var currentActive = 0
 
