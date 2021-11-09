@@ -97,14 +97,14 @@ def curso():
                 curso.append(item)
             conn.commit()
         #Aca capturamos las urls del curso
-            sql="SELECT modulocurso.idmodulocurso, modulocurso.url, modulocurso.descripcion FROM cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo WHERE cursos.idcursos = '{}';".format(idcurse)
+            sql="SELECT modulocurso.idmodulocurso, modulocurso.url,modulocurso.titulo, modulocurso.descripcion FROM cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo WHERE cursos.idcursos = '{}';".format(idcurse)
             conn = conexion.connect()
             cursor = conn.cursor()
             cursor.execute(sql)
             datos=cursor.fetchall()
             urlvideo=[]
             for filavideo in datos:
-                video={'idmodulo':filavideo[0],'url':filavideo[1], 'descripcion':filavideo[2]}
+                video={'idmodulo':filavideo[0],'url':filavideo[1], 'titulo':filavideo[2], 'descripcion':filavideo[3]}
                 urlvideo.append(video)
             conn.commit()
         #Aca capturamos los pdf por modulo
