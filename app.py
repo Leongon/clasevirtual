@@ -83,7 +83,7 @@ def curso():
 
     curse = request.args.get('curso', 'No tienes permiso para acceder')
     idcurse = request.args.get('idcurse', 'Sin respuesta')
-    if not idcurse == "":
+    if not idcurse == "Sin respuesta":
         #Aca capturamos los datos generales del curso
         sql="SELECT * FROM dbdesire.cursos where idcursos = {};".format(idcurse)
         conn = conexion.connect()
