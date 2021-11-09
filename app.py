@@ -79,10 +79,46 @@ def cursos():
         return jsonify({'mensaje':"Error en la base de datos"})
         
 @app.route('/curso')    
-def curso():    
+def curso():
+
     curse = request.args.get('curso', 'No tienes permiso para acceder')
-    idcurse = request.args.get('idcurse', '!')
-    return 'El curso es: {}, y el id es: {}'.format(curse, idcurse)
+    idcurse = request.args.get('idcurse', 'Sin respuesta')
+    if not idcurse == "":
+        #Aca capturamos los datos generales del curso
+        sql="SELECT * FROM dbdesire.cursos where idcursos = {};".format(idcurse)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()
+        curso=[]
+        if not len(datos) == 0: 
+            for fila in datos:
+                item={'idcurso':fila[0],'curso':fila[1],'descripcion':fila[2]}
+                curso.append(item)
+            conn.commit()
+        #Aca capturamos las urls del curso
+            sql="SELECT modulocurso.idmodulocurso, modulocurso.url, modulocurso.descripcion FROM cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo WHERE cursos.idcursos = '{}';".format(idcurse)
+            conn = conexion.connect()
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            datos=cursor.fetchall()
+            urlvideo=[]
+            for filavideo in datos:
+                video={'idmodulo':filavideo[0],'url':filavideo[1], 'descripcion':filavideo[2]}
+                urlvideo.append(video)
+            conn.commit()
+        #Aca capturamos los pdf por modulo
+            sql="SELECT modulocurso.idmodulocurso, archivoscurso.urlpdf FROM (cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo) INNER JOIN archivoscurso ON modulocurso.idmodulocurso = archivoscurso.fkmodulocurso WHERE cursos.idcursos = '{}';".format(idcurse)
+            conn = conexion.connect()
+            cursor = conn.cursor()
+            cursor.execute(sql)
+            datos=cursor.fetchall()
+            urlpdf=[]
+            for filapdf in datos:
+                pdf={'idmodulocurso':filapdf[0],'url':filapdf[1]}
+                urlpdf.append(pdf)
+            conn.commit()   
+        return render_template("Videos.html", curso = curso, urlvideo = urlvideo, urlpdf = urlpdf)
         
 @app.route('/inicio')
 def inicio():

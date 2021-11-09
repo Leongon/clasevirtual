@@ -117,21 +117,11 @@
       </div>
     </nav>
     <div class="mt-20 w-96 bg-gray-900 flex flex-col">
-      <ul class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
-        <li class="pb-4 hover:text-blue-500"> 1 - <a class=" list" href="https://www.youtube.com/embed/X41HbufBhXw">Introduccion</a></li>
-        <li class="pb-4 hover:text-blue-500"> 2 - <a class="list" href="https://player.vimeo.com/video/308645388?h=b6e3487c73">Pocicion de los dedos</a></li>
-        <li class="pb-4 hover:text-blue-500"> 3 - <a class="list" href="https://player.vimeo.com/video/457868609?h=3bc31eedc2">Tecnicas de musica</a></li>
-        <li class="pb-4 hover:text-blue-500"> 5 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 4 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 6 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 7 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 8 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 9 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 10 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 11 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 12 - <a class="list" href="">Solfeo</a></li>
-        <li class="pb-4 hover:text-blue-500"> 13 - <a class="list" href="https://player.vimeo.com/video/457868609?h=3bc31eedc2">Solfeo</a></li>
-      </ul>  
+      <ol class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
+        {% for video in urlvideo %}
+        <li class="pb-4 hover:text-blue-500"><a class=" list" href="{{ video.url }}">{{ video.descripcion }}</a></li>        
+        {% endfor %}
+      </ol>  
     </div>
     <div class="bg-gray-800 h-screen flex flex-col items-center">
       <div class="flex mt-24 m-2 flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
