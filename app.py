@@ -195,17 +195,17 @@ def apiRegistro():
         resUsuario = apileerUsuario(request.json['usuario'])
         resCorreo = apileerCorreo(request.json['correo'])
         resTelefono = apileerTelefono(request.json['telefono'])
+        
 
-        if resUsuario['success'] and resCorreo['success'] and resTelefono['success'] != True:
-            sql = """INSERT INTO dbDesire.usuarios (usuario, pass, nombres, apellidos, correo, telefono, fkrol, estado) 
-            VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','1','1');""".format(request.json['usuario'],request.json['pass'],request.json['nombres'],request.json['apellidos'],request.json['correo'],request.json['telefono'])
+        if (resUsuario['success'] and resCorreo['success'] and resTelefono['success']) != True:
+            sql = """INSERT INTO dbDesire.usuarios (usuario, pass, nombres, apellidos, correo, telefono, fkrol, estado)VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}','1','1');""".format(request.json['usuario'],request.json['pass'],request.json['nombres'],request.json['apellidos'],request.json['correo'],request.json['telefono'])
             conn = conexion.connect()
             cursor = conn.cursor()
             cursor.execute(sql)
             conn.commit()
             return jsonify("Registro correcto")
         else:
-            return jsonify(resUsuario['msj'],resCorreo['msj'],resTelefono['msj'])
+            return jsonify(resCorreo,resUsuario,resTelefono)
 
     except Exception as ex:
             raise ex
