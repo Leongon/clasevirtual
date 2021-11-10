@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="../static/src/css/scroll.css">
 
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    
+    <title>Disceri Music - Curso</title>
+    <link rel="shortcut icon" href="../static/src/img/ico.png" />
 
   <title></title>
 
@@ -22,10 +25,20 @@
 <body class="leading-normal tracking-normal text-indigo-400  bg-cover bg-fixed"
   style="background-image: url('../static/src/img/header.png');">
   <!-- navbar goes here -->
+  <style>
+    .tabs a.activar {
+      background: white;
+      border-bottom: 1px solid white;
+    }
+
+    .views .activar {
+      display: block !important;
+    }
+  </style>
 
   <div class="relative flex  conatiner">
 
-  <nav class=" tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
+    <nav class="border-gray-700 shadow-inner tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
 
       <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
         <div class="flex justify-between">
@@ -116,48 +129,153 @@
         <a href="#"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
       </div>
-  </nav>
+    </nav>
 
-  <div class="mt-20 w-96 bg-gray-900 flex flex-col">
-    <ol class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
+    <div class="border-gray-700 shadow-inner mt-20 w-96 bg-gray-900 flex flex-col">
+      <ol class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
         {% for video in urlvideo %}
-        <li class="pb-4 hover:text-blue-500"><a class="list" href="{{ video.url }}"  >{{ video.titulo }}</a></li>        
+        <li class="pb-4 hover:text-blue-500"><a class="list" href="{{ video.url }}">{{ video.titulo }}</a></li>
         {% endfor %}
-    </ol>  
+      </ol>
+    </div>
+
+    <div class=" bg-gray-800 shadow-inner h-screen flex flex-col items-center">
+      <div class="m-4">
+        <div class="flex mt-24 m-2 flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
+          <iframe id="video" class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src="" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="flex w-full gap-2">
+          <button
+            class="anterior text-white radio font-black text-2xl  text-center self-center w-full p-2 px-4 rounded-lg cursor-pointer hover:opacity-75 hover:text-white bg-yellow-400">
+            <p class="m-5"><i class="fas fa-angle-double-left"></i> Anterior</p>
+          </button>
+          <button
+            class="siguiente text-white radio font-black text-2xl  text-center self-center w-full py-2 px-4 rounded-lg cursor-pointer hover:opacity-75 bg-yellow-400 hover:text-white">
+            <p class="m-5">Siguiente <i class="fas fa-angle-double-right"></i>
+            </p>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="shadow-inner mt-20 w-96 bg-gray-900 ">
+      <div class="m-2">
+        <h1 class="mt-6 mt-6 p-2 text-center border-4 border-yellow-400 text-white rounded-t-lg">Materiales de trabajo
+        </h1>
+        <ul class="shadow-inner border-4 border-yellow-400 caja flex-col list-none divide-y text-align: justify">
+          <div class="divide-y mr-4 ml-4">
+            {% for archivos in urlpdf %}
+            <li id="lista" class="pb-4 hover:text-blue-500 listararchi listarchivo{{archivos.idmodulocurso}} invisible">
+              <i class="fas fa-file"></i> <a value="{{archivos.idmodulocurso}}" href="A">{{archivos.url}}</a>
+            </li>
+            {% endfor %}
+
+          </div>
+        </ul>
+        <h1 class=" mt-8 p-2 text-center border-4 border-yellow-400 text-white rounded-t-lg">Propocito de la Clase</h1>
+        <ul class=" border-4 border-yellow-400 caja flex-col list-none text-align: justify">
+          <div class="p-4">
+            {% for video in urlvideo %}
+            <p class="descripcion descripcion{{video.idmodulo}} invisible">{{video.descripcion}}</p>
+            {% endfor %}
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <button
+        class="transition shadow-lg animate-bounce fixed mt-8 mr-6 top-24 border-8 hover:border-gray-900 right-72 modal-open rounded-full flex items-center justify-center bg-yellow-500 hover:bg-yellow-600">
+        <p class="absolute mt-16 font-black text-gray-800 ">COMPRAR</p>
+        <img class="scale-75 text-white p-6 h-24 w-24"  src="../static/src/img/carrito de compras.png" alt="">
+      </button>
+    </div>
+
+    <div class=" transition shadow-lg flex flex-col items-center modal opacity-0 pointer-events-none fixed w-full h-full flex items-center justify-center">
+      <div class="modal-overlay absolute w-full h-full bg-gray-800 bg-opacity-75 rounded-t-lg ">
+      </div>
+      <div class="w-full h-full rounded-t-lg modal-container  rounded shadow-lg z-50 overflow-y-auto">
+        <!--  pagos -->
+        <div class="rounded-t-lg flex items-center justify-center h-screen">
+          <div class="bg-gray-800 max-w-sm max-h-sm  h-auto bg-white rounded shadow-2xl">
+            
+            <div class="bg-gray-700 tabs flex text-sm items-center text-center justify-center ">
+              <a class="px-4  p-4 mx-0.5 -mb-px  rounded-t-lg cursor-pointer hover:bg-white activar"
+                mostrar="#uno"><img class="w-20" src="../static/src/img/Old_Visa_Logo.svg" alt=""></a>
+              <a class="px-3 p-6 mx-0.5 -mb-px  rounded-t-lg cursor-pointer hover:bg-white"
+                mostrar="#dos"><img class="w-20" src="../static/src/img/yape.png" alt=""></a>
+              
+            </div>
+
+            <div class="views">
+              <!-- form tarjeta de credito -->
+              <div id="uno" class="hidden p-3 border-b-2 border-pink-300  text-lg bg-white activar">
+                <!-- form tarjeta de credito -->
+                <form action="">
+                  <div class=" p-6 mt-2">
+                    <p class="text-center text-gray-800 font-medium">Tarjeta de credito</p>
+
+                    <div class="inline-block mt-2 w-full pr-1">
+                      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="NumeroT" name="NumeroT"
+                        type="text" required="" placeholder="Numero de tarjeta" aria-label="NumeroT">
+                    </div>
+
+                    <div class="inline-block mt-2 w-1/2 pr-1">
+                      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="fecha" name="fecha" type="text"
+                        required="" placeholder="MM/AA" aria-label="fecha">
+                    </div>
+
+                    <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                      <label class="hidden block text-sm text-gray-600" for="cvv">Zip</label>
+                      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="cvv" name="cvv" type="text"
+                        required="" placeholder="CVV" aria-label="cvv">
+                    </div>
+
+                    <div class="inline-block mt-2 w-1/2 pr-1">
+
+                      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="Nombre" name="Nombre" type="text"
+                        required="" placeholder="Nombre" aria-label="Nombre">
+                    </div>
+                    <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                      <input class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" id="Apellidos" name="Apellidos"
+                        type="text" required="" placeholder="Apellidos" aria-label="Apellidos">
+                    </div>
+
+                    <div class="mt-2 w-full">
+                      <input class="w-full px-5  py-4 text-gray-700 bg-gray-200 rounded" id="Email" name="Email" type="text"
+                        required="" placeholder="Email" aria-label="Email">
+                    </div>
+
+                    <div class="mt-4 w-full">
+                      <button
+                        class=" font-black text-2xl  text-center self-center w-full p-10 px-4 py-3 text-white font-light tracking-wider bg-gray-900 rounded"
+                        type="submit"> Pagar 3.00 /S</button>
+                    </div>
+                    <button type="button"  class="mt-2 modal-close font-black text-2xl  text-center self-center w-full p-10 px-4 py-3 text-white font-light tracking-wider bg-red-900 rounded">
+                      x
+                    </button>
+                  </div>
+                </form>  
+              </div>
+              <div id="dos" class="hidden p-3 border-b-2 border-pink-300 text-lg tracking-widest bg-white">
+                ...Yape
+              </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
   </div>
 
-    <div class="bg-gray-800 h-screen flex flex-col items-center">
-      <div class="flex mt-24 m-2 flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
-        <iframe class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="flex w-full gap-2">
-        <button class="anterior text-white radio font-black text-2xl  text-center self-center w-full p-2 px-4 rounded-lg cursor-pointer hover:opacity-75 hover:text-white bg-yellow-400"><p class="m-5"><i class="fas fa-angle-double-left"></i> Anterior</p> </button>
-        <button class="siguiente text-white radio font-black text-2xl  text-center self-center w-full py-2 px-4 rounded-lg cursor-pointer hover:opacity-75 bg-yellow-400 hover:text-white"><p class="m-5">Siguiente <i class="fas fa-angle-double-right"></i></p></button>
-      </div>
-    </div>
-    
-    <div class="mt-20 w-96 bg-gray-900 ">
-      <h1 class="mt-2 p-2 text-center border-4 border-yellow-400 text-white rounded-t-lg">Materiales de trabajo</h1>
-      <ul class=" border-4 border-yellow-400 caja flex-col list-none divide-y text-align: justify">
-        <div class="divide-y mr-4 ml-4">
-          {% for archivos in urlpdf %}
-          <li id="lista" class="pb-4 hover:text-blue-500 listararchi listarchivo{{archivos.idmodulocurso}} invisible"> <i class="fas fa-file"></i> <a value="{{archivos.idmodulocurso}}" href="A">{{archivos.url}}</a></li>
-          {% endfor %}
-          
-        </div>
-      </ul>
-      <h1 class=" mt-8 p-2 text-center border-4 border-yellow-400 text-white rounded-t-lg">Propocito de la Clase</h1>
-      <ul class=" border-4 border-yellow-400 caja flex-col list-none text-align: justify">
-        <div class="p-4">
-          {% for video in urlvideo %}
-          <p class="descripcion descripcion{{video.idmodulo}} invisible">{{video.descripcion}}</p>
-          {% endfor %}
-        </div>
-      </ul>  
-    </div>
-    
-  </div>
-  
   <script src="../static/src/js/jquery-3.6.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
     integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
@@ -169,51 +287,51 @@
   <script src="../static/src/js/datos/login.js"></script>
 
   <script>
-    
-    if (localStorage.getItem("objeG")){
+
+    if (localStorage.getItem("objeG")) {
       console.log("hola")
     }
-    else{
-      
+    else {
+
       guardarlocalstoge(0)
     }
 
     imprimirlocalstore()
 
-    $( ".list" ).click(function(e) {
+    $(".list").click(function (e) {
       e.preventDefault();
-      var indice = $( ".list" ).index( this );
+      var indice = $(".list").index(this);
       var URLactual = $(this).attr('href');
       $(".cambio").attr("src", URLactual);
       guardarlocalstoge(indice)
       imprimirlocalstore()
-      
+
       $(".lista").load("/curso?curso=piano&idcurse=1#")
-      
+
     });
 
     function guardarlocalstoge(indice) {
 
-      let objeto={
-        indiceList:indice  
+      let objeto = {
+        indiceList: indice
       }
 
-      localStorage.setItem("objeG",JSON.stringify(objeto))
-      
+      localStorage.setItem("objeG", JSON.stringify(objeto))
+
     }
 
-    function imprimirlocalstore(){
-      
+    function imprimirlocalstore() {
+
       validar()
 
-      let objeto=JSON.parse(localStorage.getItem("objeG"));
+      let objeto = JSON.parse(localStorage.getItem("objeG"));
 
-      a=objeto.indiceList
+      a = objeto.indiceList
       update(a)
       console.log(a)
 
-      b=".listarchivo"+(a+1)
-      c=".descripcion"+(a+1)
+      b = ".listarchivo" + (a + 1)
+      c = ".descripcion" + (a + 1)
       $(b).addClass("visible")
       $(b).removeClass("fixed")
       $(b).removeClass("invisible")
@@ -221,16 +339,16 @@
       $(c).addClass("visible")
       $(c).removeClass("fixed")
       $(c).removeClass("invisible")
-      
+
     }
     function validar() {
       var item = document.getElementById("lista");
 
-      var hasClaseV = item.classList.contains( 'visible' );
-      var hasClaseI = item.classList.contains( 'invisible' );
-      
-      if(hasClaseI==true){
-        
+      var hasClaseV = item.classList.contains('visible');
+      var hasClaseI = item.classList.contains('invisible');
+
+      if (hasClaseI == true) {
+
         $(".listararchi").addClass("invisible")
         $(".listararchi").addClass("fixed")
         $(".listararchi").removeClass("visible")
@@ -241,7 +359,7 @@
 
       }
 
-      if(hasClaseV==true){
+      if (hasClaseV == true) {
         $(".listararchi").addClass("invisible")
         $(".listararchi").addClass("fixed")
         $(".listararchi").removeClass("visible")
@@ -250,15 +368,15 @@
         $(".descripcion").removeClass("visible")
       }
     }
-    
-    
+
+
     var currentActive = 0
-    let objeto=JSON.parse(localStorage.getItem("objeG"));
-    a=objeto.indiceList
+    let objeto = JSON.parse(localStorage.getItem("objeG"));
+    a = objeto.indiceList
 
     $(".siguiente").click(function () {
-      
-      a=a+1
+
+      a = a + 1
       if (a > $(".list").length) {
         a = $(".list").length
       }
@@ -269,7 +387,7 @@
     })
 
     $(".anterior").click(function () {
-      a=a-1
+      a = a - 1
       if (a < 0) {
         a = 0
       }
@@ -280,35 +398,94 @@
 
     })
 
- function update(valor) {
-      
+    function update(valor) {
+
       $(".list").each(function (index) {
         if (index >= 0 && index == valor) { //condicion para excluir el primer y el ultimo elemento de la lista
           var URLactual = $(this).attr('href');
-          $(".cambio").attr("src", URLactual);    
+          $(".cambio").attr("src", URLactual);
         }
       });
-      contarlistas=$(".list").length-1
+      contarlistas = $(".list").length - 1
       console.log(contarlistas)
-    if (a === 0) {
-      $('.anterior').prop('disabled', true);
-      $(".anterior").addClass("cursor-not-allowed");
-      $(".siguiente").removeClass("cursor-not-allowed");
-      $('.siguiente').prop('disabled', false);
-    } else if (a === contarlistas) {
-      $('.siguiente').prop('disabled', true);
-      $(".siguiente").addClass("cursor-not-allowed");
-      $(".anterior").removeClass("cursor-not-allowed");
-    } else {
-      $('.anterior').prop('disabled', false);
-      $('.siguiente').prop('disabled', false);
-      $(".anterior").removeClass("cursor-not-allowed");
-      $(".siguiente").removeClass("cursor-not-allowed");
+      if (a === 0) {
+        $('.anterior').prop('disabled', true);
+        $(".anterior").addClass("cursor-not-allowed");
+        $(".siguiente").removeClass("cursor-not-allowed");
+        $('.siguiente').prop('disabled', false);
+      } else if (a === contarlistas) {
+        $('.siguiente').prop('disabled', true);
+        $(".siguiente").addClass("cursor-not-allowed");
+        $(".anterior").removeClass("cursor-not-allowed");
+      } else {
+        $('.anterior').prop('disabled', false);
+        $('.siguiente').prop('disabled', false);
+        $(".anterior").removeClass("cursor-not-allowed");
+        $(".siguiente").removeClass("cursor-not-allowed");
+      }
+
     }
 
-}
+  </script>
+
+  <script>
+    var openmodal = document.querySelectorAll('.modal-open')
+    for (var i = 0; i < openmodal.length; i++) {
+      openmodal[i].addEventListener('click', function (event) {
+        event.preventDefault()
+        toggleModal()
+      })
+    }
+
+    const overlay = document.querySelector('.modal-overlay')
+
+    /* click en cualquier parte de la pagina cierra el modal */
+
+    /*overlay.addEventListener('click', toggleModal)*/
+
+    var closemodal = document.querySelectorAll('.modal-close')
+    for (var i = 0; i < closemodal.length; i++) {
+      closemodal[i].addEventListener('click', toggleModal)
+    }
+
+    document.onkeydown = function (evt) {
+      evt = evt || window.event
+      var isEscape = false
+      if ("key" in evt) {
+        isEscape = (evt.key === "Escape" || evt.key === "Esc")
+      } else {
+        isEscape = (evt.keyCode === 27)
+      }
+      if (isEscape && document.body.classList.contains('modal-active')) {
+        toggleModal()
+      }
+    };
+
+
+    function toggleModal() {
+      const body = document.querySelector('body')
+      const modal = document.querySelector('.modal')
+      modal.classList.toggle('opacity-0')
+      modal.classList.toggle('pointer-events-none')
+      body.classList.toggle('modal-active')
+    }
+
 
   </script>
+<script>
+  $(document).ready(function(){
+    
+    $(".tabs>a").on("click",function(){
+        
+         var id = $(this).attr("mostrar");
+         
+         $(this).addClass("activar").siblings().removeClass("activar");
+         $(".views>div").removeClass("activar").siblings(id).addClass("activar");
+         
+    });
+    
+ });
+</script>
 </body>
 
 </html>
