@@ -25,7 +25,7 @@
 
   <div class="relative flex  conatiner">
 
-    <nav class=" tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
+  <nav class=" tex-color fixed w-full top-0 max-w-full bg-gray-900 width-f  ">
 
       <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
         <div class="flex justify-between">
@@ -116,15 +116,15 @@
         <a href="#"
           class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
       </div>
-    </nav>
+  </nav>
 
-    <div class="mt-20 w-96 bg-gray-900 flex flex-col">
-      <ol class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
+  <div class="mt-20 w-96 bg-gray-900 flex flex-col">
+    <ol class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
         {% for video in urlvideo %}
         <li class="pb-4 hover:text-blue-500"><a class="list" href="{{ video.url }}"  >{{ video.titulo }}</a></li>        
         {% endfor %}
-      </ol>  
-    </div>
+    </ol>  
+  </div>
 
     <div class="bg-gray-800 h-screen flex flex-col items-center">
       <div class="flex mt-24 m-2 flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
@@ -290,12 +290,15 @@
       });
       contarlistas=$(".list").length-1
       console.log(contarlistas)
-    if (valor === 0) {
+    if (a === 0) {
       $('.anterior').prop('disabled', true);
       $(".anterior").addClass("cursor-not-allowed");
-    } else if (valor === contarlistas) {
+      $(".siguiente").removeClass("cursor-not-allowed");
+      $('.siguiente').prop('disabled', false);
+    } else if (a === contarlistas) {
       $('.siguiente').prop('disabled', true);
       $(".siguiente").addClass("cursor-not-allowed");
+      $(".anterior").removeClass("cursor-not-allowed");
     } else {
       $('.anterior').prop('disabled', false);
       $('.siguiente').prop('disabled', false);
