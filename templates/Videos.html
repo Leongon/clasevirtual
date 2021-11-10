@@ -172,12 +172,14 @@
     
     if (localStorage.getItem("objeG")){
       console.log("hola")
-    }else{
+    }
+    else{
       
       guardarlocalstoge(0)
     }
 
     imprimirlocalstore()
+
     $( ".list" ).click(function(e) {
       e.preventDefault();
       var indice = $( ".list" ).index( this );
@@ -199,6 +201,7 @@
       localStorage.setItem("objeG",JSON.stringify(objeto))
       
     }
+
     function imprimirlocalstore(){
       
       validar()
@@ -250,40 +253,57 @@
     
     
     var currentActive = 0
+    let objeto=JSON.parse(localStorage.getItem("objeG"));
+    a=objeto.indiceList
 
     $(".siguiente").click(function () {
-      currentActive++;
-      if (currentActive > $(".list").length) {
-        currentActive = $(".list").length
+      
+      a=a+1
+      if (a > $(".list").length) {
+        a = $(".list").length
       }
-      console.log(currentActive)
-      update(currentActive)
+      console.log(a)
+      update(a)
+      guardarlocalstoge(a)
+      imprimirlocalstore()
     })
 
     $(".anterior").click(function () {
-      currentActive--;
-      if (currentActive < 0) {
-        currentActive = 0
+      a=a-1
+      if (a < 0) {
+        a = 0
       }
-      console.log(currentActive)
-      update(currentActive)
+      console.log(a)
+      update(a)
+      guardarlocalstoge(a)
+      imprimirlocalstore()
 
     })
 
-    function update(valor) {
+ function update(valor) {
+      
       $(".list").each(function (index) {
         if (index >= 0 && index == valor) { //condicion para excluir el primer y el ultimo elemento de la lista
           var URLactual = $(this).attr('href');
-          $(".cambio").attr("src", URLactual);
+          $(".cambio").attr("src", URLactual);    
         }
       });
-
+      contarlistas=$(".list").length-1
+      console.log(contarlistas)
+    if (valor === 0) {
+      $('.anterior').prop('disabled', true);
+      $(".anterior").addClass("cursor-not-allowed");
+    } else if (valor === contarlistas) {
+      $('.siguiente').prop('disabled', true);
+      $(".siguiente").addClass("cursor-not-allowed");
+    } else {
+      $('.anterior').prop('disabled', false);
+      $('.siguiente').prop('disabled', false);
+      $(".anterior").removeClass("cursor-not-allowed");
     }
-    
-/* const lista = document.querySelectorAll('.list');
-    
-    
- */
+
+}
+
   </script>
 </body>
 
