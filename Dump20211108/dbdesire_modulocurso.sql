@@ -27,11 +27,12 @@ CREATE TABLE `modulocurso` (
   `url` varchar(45) NOT NULL,
   `fkcursomodulo` int(11) NOT NULL,
   `estado` varchar(45) NOT NULL,
+  `titulo` varchar(45) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`idmodulocurso`),
   KEY `fk_modulo curso_cursos1_idx` (`fkcursomodulo`),
   CONSTRAINT `fk_modulo curso_cursos1` FOREIGN KEY (`fkcursomodulo`) REFERENCES `cursos` (`idcursos`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +41,7 @@ CREATE TABLE `modulocurso` (
 
 LOCK TABLES `modulocurso` WRITE;
 /*!40000 ALTER TABLE `modulocurso` DISABLE KEYS */;
-INSERT INTO `modulocurso` VALUES (1,'https://www.youtube.com/embed/GIHPtnAyD5I',1,'1','Tutorial mariposa traicionera'),(2,'https://www.youtube.com/embed/bjwgt1kRqEU',1,'1','Tutorial la camisa negra');
+INSERT INTO `modulocurso` VALUES (1,'https://www.youtube.com/embed/GIHPtnAyD5I',1,'1','Tutorial mariposa traicionera','Te enseño mariposa traicionera'),(2,'https://www.youtube.com/embed/bjwgt1kRqEU',1,'1','Tutorial la camisa negra','Te enseño la camisa negra'),(3,'https://www.youtube.com/embed/bjwgt1kRqEU',1,'1','Tutorial la cucaracha','Te enseño la cucaracha');
 /*!40000 ALTER TABLE `modulocurso` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-08 22:54:06
+-- Dump completed on 2021-11-09 17:57:55

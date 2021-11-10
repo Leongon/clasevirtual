@@ -128,7 +128,7 @@
 
     <div class="bg-gray-800 h-screen flex flex-col items-center">
       <div class="flex mt-24 m-2 flex-row md:w-screen max-w-screen-md text-white space-x-4 font-bold  p-2">
-        <iframe class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src="https://www.youtube.com/embed/X41HbufBhXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="flex w-full gap-2">
         <button class="anterior text-white radio font-black text-2xl  text-center self-center w-full p-2 px-4 rounded-lg cursor-pointer hover:opacity-75 hover:text-white bg-yellow-400"><p class="m-5"><i class="fas fa-angle-double-left"></i> Anterior</p> </button>
@@ -147,9 +147,11 @@
         </div>
       </ul>
       <h1 class=" mt-8 p-2 text-center border-4 border-yellow-400 text-white rounded-t-lg">Propocito de la Clase</h1>
-      <ul class=" border-4 border-yellow-400 caja flex-col list-none divide-y text-align: justify">
-        <div class="divide-y m-4">
-          <p>en esta clase aprenderemos a como desenvolver los dedos y aprender un poco de teoria musical</p>
+      <ul class=" border-4 border-yellow-400 caja flex-col list-none text-align: justify">
+        <div class="p-4">
+          {% for video in urlvideo %}
+          <p class="descripcion descripcion{{video.idmodulo}} invisible">{{video.descripcion}}</p>
+          {% endfor %}
         </div>
       </ul>  
     </div>
@@ -172,7 +174,7 @@
       console.log("hola")
     }else{
       
-      guardarlocalstoge(1)
+      guardarlocalstoge(0)
     }
 
     imprimirlocalstore()
@@ -204,14 +206,19 @@
       let objeto=JSON.parse(localStorage.getItem("objeG"));
 
       a=objeto.indiceList
-
+      update(a)
       console.log(a)
 
       b=".listarchivo"+(a+1)
-
+      c=".descripcion"+(a+1)
       $(b).addClass("visible")
       $(b).removeClass("fixed")
       $(b).removeClass("invisible")
+
+      $(c).addClass("visible")
+      $(c).removeClass("fixed")
+      $(c).removeClass("invisible")
+      
     }
     function validar() {
       var item = document.getElementById("lista");
@@ -220,19 +227,28 @@
       var hasClaseI = item.classList.contains( 'invisible' );
       
       if(hasClaseI==true){
+        
         $(".listararchi").addClass("invisible")
         $(".listararchi").addClass("fixed")
         $(".listararchi").removeClass("visible")
+
+        $(".descripcion").addClass("invisible")
+        $(".descripcion").addClass("fixed")
+        $(".descripcion").removeClass("visible")
+
       }
 
       if(hasClaseV==true){
         $(".listararchi").addClass("invisible")
         $(".listararchi").addClass("fixed")
         $(".listararchi").removeClass("visible")
+        $(".descripcion").addClass("invisible")
+        $(".descripcion").addClass("fixed")
+        $(".descripcion").removeClass("visible")
       }
-    }  
-/* const lista = document.querySelectorAll('.list');
-    update(0)
+    }
+    
+    
     var currentActive = 0
 
     $(".siguiente").click(function () {
@@ -263,6 +279,9 @@
       });
 
     }
+    
+/* const lista = document.querySelectorAll('.list');
+    
     
  */
   </script>
