@@ -134,7 +134,7 @@
     <div class="border-gray-700 shadow-inner mt-20 w-96 bg-gray-900 flex flex-col">
       <ol class="overflow-y-auto h-96 caja flex-col mt-6  ml-6 mr-7 list-none divide-y text-align: justify">
         {% for video in urlvideo %}
-        <li class="pb-4 hover:text-blue-500"><a class="list" href="{{ video.url }}">{{ video.titulo }}</a></li>
+        <li class="pb-4 hover:text-blue-500">{{ video.nro }}. <a class="list" href="{{ video.url }}">{{ video.titulo }}</a></li>
         {% endfor %}
       </ol>
     </div>

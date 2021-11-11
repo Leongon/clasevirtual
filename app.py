@@ -1,4 +1,4 @@
-from logging import error
+from logging import error, fatal
 from flask import Flask, render_template, request, make_response, jsonify, redirect, session, escape, url_for
 from flask.json import JSONEncoder
 from flaskext.mysql import MySQL
@@ -80,10 +80,25 @@ def cursos():
         
 @app.route('/curso')    
 def curso():
-
-    curse = request.args.get('curso', 'No tienes permiso para acceder')
-    idcurse = request.args.get('idcurse', 'Sin respuesta')
-    if not idcurse == "Sin respuesta":
+    try:
+        #Lo hice asi por si mandaban el id de un usuario q compro el curso podian verlo desde una cuenta gratis
+        iduser = ''              
+        idcurse = request.args.get('idcurse', '') 
+        if not idcurse == "":
+            acceso = False
+            if 'usuario' in session:
+                #Esta variable nos va ayudar a saber si el usuario tiene acceso anuestro curso
+                iduser = session["iduser"] #Aca jalo el id de la secion que esta encriptada                 
+                sql="SELECT * FROM dbdesire.cursoalumno where (fkusuario = '{0}' and fkcurso = '{1}' and estado = '1');".format(iduser, idcurse)
+                conn = conexion.connect()
+                cursor = conn.cursor()
+                cursor.execute(sql)
+                datos=cursor.fetchall()
+                print(datos) 
+                #Aca comprobamos si el usuario tiene el curso
+                if not len(datos) == 0:
+                    acceso = True 
+        #Aca carga los datos del curso indepentiende de la sesion
         #Aca capturamos los datos generales del curso
         sql="SELECT * FROM dbdesire.cursos where idcursos = {};".format(idcurse)
         conn = conexion.connect()
@@ -91,34 +106,53 @@ def curso():
         cursor.execute(sql)
         datos=cursor.fetchall()
         curso=[]
-        if not len(datos) == 0: 
+        if not len(datos) == 0:
             for fila in datos:
                 item={'idcurso':fila[0],'curso':fila[1],'descripcion':fila[2]}
                 curso.append(item)
             conn.commit()
         #Aca capturamos las urls del curso
-            sql="SELECT modulocurso.idmodulocurso, modulocurso.url,modulocurso.titulo, modulocurso.descripcion FROM cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo WHERE cursos.idcursos = '{}';".format(idcurse)
-            conn = conexion.connect()
-            cursor = conn.cursor()
-            cursor.execute(sql)
-            datos=cursor.fetchall()
-            urlvideo=[]
-            for filavideo in datos:
-                video={'idmodulo':filavideo[0],'url':filavideo[1], 'titulo':filavideo[2], 'descripcion':filavideo[3]}
+        sql="SELECT modulocurso.idmodulocurso, modulocurso.url,modulocurso.titulo, modulocurso.descripcion FROM cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo WHERE cursos.idcursos = '{}';".format(idcurse)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()
+        urlvideo=[]
+        i = 0
+        for filavideo in datos:
+            i += 1
+            if i == 1:
+                video={'nro': i , 'idmodulo':filavideo[0],'url':filavideo[1], 'titulo':filavideo[2], 'descripcion':filavideo[3], 'acceso': True}
                 urlvideo.append(video)
-            conn.commit()
+            elif i >=2 and acceso == True:
+                video={'nro': i , 'idmodulo':filavideo[0],'url':filavideo[1], 'titulo':filavideo[2], 'descripcion':filavideo[3], 'acceso': True}
+                urlvideo.append(video) 
+            else: 
+                video={'nro': i , 'idmodulo':filavideo[0],'url':'Compra nuestro curso para acceder a todo el contenido', 'titulo':filavideo[2], 'descripcion':'Compra nuestro curso' , 'acceso': False}
+                urlvideo.append(video)  
+        conn.commit()
         #Aca capturamos los pdf por modulo
-            sql="SELECT modulocurso.idmodulocurso, archivoscurso.urlpdf FROM (cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo) INNER JOIN archivoscurso ON modulocurso.idmodulocurso = archivoscurso.fkmodulocurso WHERE cursos.idcursos = '{}';".format(idcurse)
-            conn = conexion.connect()
-            cursor = conn.cursor()
-            cursor.execute(sql)
-            datos=cursor.fetchall()
-            urlpdf=[]
-            for filapdf in datos:
+        sql="SELECT modulocurso.idmodulocurso, archivoscurso.urlpdf FROM (cursos INNER JOIN modulocurso ON cursos.idcursos = modulocurso.fkcursomodulo) INNER JOIN archivoscurso ON modulocurso.idmodulocurso = archivoscurso.fkmodulocurso WHERE cursos.idcursos = '{}';".format(idcurse)
+        conn = conexion.connect()
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        datos=cursor.fetchall()
+        urlpdf=[]
+        i = 0
+        for filapdf in datos:
+            i += 1
+            if acceso == True:
                 pdf={'idmodulocurso':filapdf[0],'url':filapdf[1]}
                 urlpdf.append(pdf)
-            conn.commit()   
+            else:
+                pdf={'idmodulocurso':filapdf[0],'url':'Compra nuestro curso para acceder a todo el contenido'}
+                urlpdf.append(pdf)
+                break
+
+        conn.commit()
         return render_template("Videos.html", curso = curso, urlvideo = urlvideo, urlpdf = urlpdf)
+    except Exception as ex:
+        raise ex 
 @app.route('/inicio')
 def inicio():
     return render_template("inicio.html")    
@@ -132,6 +166,7 @@ def apiLogin():
         cursor.execute(sql)
         datos=cursor.fetchall()        
         if not len(datos) == 0:
+            session["iduser"]= datos[0][0]
             session["usuario"]= datos[0][1]
             session["nombre"]= datos[0][3]
             session["rol"]= datos[0][7]
