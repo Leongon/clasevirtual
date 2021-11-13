@@ -61,14 +61,14 @@ def cursos():
                 cursos.append(producto)
             conn.commit()
 
-            sql1="SELECT a.id, a.usuario,c.curso,d.nivel,e.nombres  FROM usuarios a INNER JOIN cursoalumno b on a.id=b.fkusuario INNER JOIN cursos c on b.fkcurso = c.idcursos INNER JOIN nivel d on c.fknivel=d.idnivel INNER JOIN usuarios e on c.fkprofesor=e.id WHERE a.usuario='"+ session["usuario"] +"' "
+            sql1="SELECT a.id, a.usuario,c.curso,d.nivel,e.nombres,c.idcursos FROM usuarios a INNER JOIN cursoalumno b on a.id=b.fkusuario INNER JOIN cursos c on b.fkcurso = c.idcursos INNER JOIN nivel d on c.fknivel=d.idnivel INNER JOIN usuarios e on c.fkprofesor=e.id WHERE a.usuario='"+ session["usuario"] +"' "
             conn = conexion.connect()
             cursor = conn.cursor()
             cursor.execute(sql1)
             datos=cursor.fetchall()
             cursoalumno=[]
             for fila in datos:
-                producto={'id':fila[0],'usuario':fila[1],'curso':fila[2],'nivel':fila[3],'nombres':fila[4]}
+                producto={'id':fila[0],'usuario':fila[1],'curso':fila[2],'nivel':fila[3],'nombres':fila[4],'idcursos':fila[5]}
                 cursoalumno.append(producto)
             conn.commit()
             return render_template("Cursos.html",curso=cursosTotal,cursoalumnos=cursoalumno,cursoprofe=cursos)

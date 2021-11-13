@@ -21,9 +21,9 @@ body::-webkit-scrollbar-thumb {
 	background: #ff9d00;
 	border-radius: 5px;
 }
-.overflow-y-auto::-webkit-scrollbar-thumb {background: #ff9d00;
+.overflow-auto::-webkit-scrollbar-thumb {background: #ff9d00;
 	border-radius: 5px;
 }
-.overflow-y-auto::-webkit-scrollbar {
+.overflow-auto::-webkit-scrollbar {
 	width: 10px;
 }
