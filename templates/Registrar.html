@@ -32,107 +32,101 @@
     </style>
 
     <!-- navbar goes here -->
-    <nav class="tex-color w-full top-0 max-w-full bg-gray-900 width-f  ">
-
-        <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
-            <div class="flex justify-between">
-                <div class="flex space-x-4">
-                    <!-- logo -->
-                    <div>
-                        <div class="text-center mt-2 ">
-                            <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-                                    href="#">
-                                    Disceri
-                                    <span
-                                        class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-gray-500 to-purple-500">Music
-                                    </span>
-                                </a>
-                            </h1>
-                        </div>
-                    </div>
-                    <!-- primary nav -->
-                    <div class="hidden md:flex items-center space-x-1 text-red-500">
-                        <a href="/"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
-                                class="fas fa-home"></i> Inicio</a>
-                        <a href="/cursos"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
-                                class="fas fa-book"></i> Curso</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
-                        <a href="#"
-                            class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
-                    </div>
-                </div>
-
-                <!-- secondary nav -->
-                
-                    {% if "usuario" in session:%}
-                    <div class="hidden md:flex items-center space-x-1 gap-6">
-                        <img src="../static/src/img/user.png" alt="..." class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
-                        <h1 class="text-white text-lg">Hola {{session["nombre"]}}</h1>
-                        <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
-                                class="fas fa-sign-out-alt"></i></a>
-                    </div>
-                    {% else:%}
-                    <div class="hidden md:flex items-center space-x-1">
-                        <a href="/login"
-                            class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-                        <a href="/registrar"
-                            class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
-                    </div>
-                
-                {% endif %}
-
-                <!-- mobile button goes here -->
-                <div class="md:hidden flex items-center">
-                    <button class="mobile-menu-button">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                </div>
-
+<!-- barra de navegacion  -->
+  <nav class="border-gray-700 shadow-inner tex-color w-full top-0 max-w-full bg-gray-900 width-f  ">
+    <div class="max-w-6xl mx-auto px-4 pb-2 pt-4">
+      <div class="flex justify-between">
+        <div class="flex space-x-4">
+          <!-- logo -->
+          <div>
+            <div class="text-center mt-2 ">
+              <h1 class="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+                <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+                  href="/" id="hola">
+                  Disceri
+                  <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-gray-500 to-purple-500">Music
+                  </span>
+                </a>
+              </h1>
             </div>
-        </div>
-
-        <!-- mobile menu -->
-        <div class="bg-gray-900 top-14 fixed mobile-menu hidden md:hidden">
-            {% if "usuario" in session:%}
-            <a href="/logout" class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Salir <i
-                    class="fas fa-sign-out-alt"></i></a>
-            {% else:%}
-            <a href="/login"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
-            <a href="/registrar"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
-            {% endif %}
-        </div>
-        <!-- barra  menu abajo -->
-
-        <div class="fixed w-full  max-w-full text-center bg-gray-900 flex justify-center bottom-0 left-0 md:invisible">
-            <a href="/"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
-
-            <a href="/cursos"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+          </div>
+          <!-- primary nav -->
+          <div class="hidden md:flex items-center space-x-1 text-red-500">
+            <a href="/cursos" class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded"><i
+                class="fas fa-book"></i> Cursos</a>
             <a href="#"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
             <a href="#"
-                class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+              class="py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+          </div>
         </div>
 
+        <!-- secondary nav -->
 
-    </nav>
+        {% if "usuario" in session: %}
+        <div class="hidden md:flex items-center space-x-1 gap-6">
+          <img src="../static/src/img/user.png" alt="..."
+            class="w-10 h-10 rounded-full border-2 border-blueGray-50 shadow">
+          <h1 class="text-white text-lg">Hola {{session["nombre"]}}</h1>
+          <a href="/logout" class="text-white pr-4 pl-4 pt-2 pb-2 bg-yellow-500 rounded-lg ">Salir <i
+              class="fas fa-sign-out-alt"></i></a>
+        </div>
+        {% else:%}
+        <div class="hidden md:flex items-center space-x-1">
+          <a href="/login" class="text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+          <a href="/registrar"
+            class=" text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded transition duration-300">Registrar</a>
+        </div>
+
+        {% endif %}
+
+        <!-- mobile button goes here -->
+        <div class="md:hidden flex items-center">
+          <button class="mobile-menu-button">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- mobile menu -->
+    <div class="bg-gray-900 top-14 fixed mobile-menu hidden md:hidden">
+      {% if "usuario" in session:%}
+      <a href="/logout"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Salir <i
+          class="fas fa-sign-out-alt"></i></a>
+      {% else:%}
+      <a href="/login"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Ingresar</a>
+      <a href="/registrar"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Registrar</a>
+      {% endif %}
+    </div>
+    <!-- barra  menu abajo -->
+
+    <div class="fixed w-full  max-w-full text-center bg-gray-900 flex justify-center bottom-0 left-0 md:invisible">
+      <a href="/"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Inicio</a>
+
+      <a href="/cursos"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Curso</a>
+      <a href="#"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Planes</a>
+      <a href="#"
+        class="block py-5 px-3 text-white hover:text-gray-900 hover:bg-yellow-300 py-2 px-3 rounded">Preguntas</a>
+    </div>
+  </nav>
     <!-- Contenido aqui -->
     <div class="registro">
         <div class="alert"></div>
         <!-- component -->
         <!-- This is an example component -->
-        <div class="pr-12 pl-12 pt-5 pb -5 progress relative">
+        <div class="pr-12 pl-12 pt-5 pb -5 progress ">
             <div class="flex mb-2 items-center justify-between">
                 <div>
                     <span

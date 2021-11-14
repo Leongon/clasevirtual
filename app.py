@@ -34,10 +34,12 @@ def registrar():
 @app.route('/video')
 def panel():
     return render_template("Videos.html")
+@app.route('/subir')
+def subir():
+    return render_template("Subircursos.html")    
 @app.route('/cursos')
 def cursos():
     try:
-        
         sql="SELECT usuarios.usuario, usuarios.nombres, usuarios.apellidos, usuarios.correo, usuarios.telefono, cursos.curso, cursos.descripcion, cursos.precio, rol.rol, nivel.nivel, cursos.idcursos FROM (rol INNER JOIN usuarios ON rol.idrol = usuarios.fkrol) INNER JOIN (nivel INNER JOIN cursos ON nivel.idnivel = cursos.fknivel) ON usuarios.id = cursos.fkprofesor ;"
         conn = conexion.connect()
         cursor = conn.cursor()

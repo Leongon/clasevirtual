@@ -118,8 +118,8 @@
     </div>
   </nav>
   <!-- silabus -->
-  <div class="flex ">
-    <div class="flex-shrink p-2  bg-gray-800">
+  <div class="flex md:flex-row  flex-col  ">
+    <div class="flex-shrink p-2  bg-gray-800 invisible md:visible md:w-1/4  ">
       <div class="flex w-64 relative max-w-full max-h-full overflow-x h-96  ">
         <div class="absolute ml-3 h-full max-w-full max-h-full w-2 text-xs rounded bg-yellow-200">
           <div style="width:100%; height:0% ;"
@@ -149,31 +149,27 @@
         </ul>
       </div>
     </div>
-    <div class="flex-grow bg-gray-500 p-2">
+    <div class="flex-grow bg-gray-500 p-2 ">
       <div class="flex-col overflow-auto">
 
 
-        <div class="bg-gray-900 w-full shadow rounded-lg p-5">
-
+        <div class="bg-gray-900 w-full shadow rounded-lg p-2 overflow-auto">
+          <div class="flex items-center space-x-2 text-gray-400 overflow-auto">
+            <div class="flex items-center space-x-4 p-2">
+              <button class="mr-12 text-1xl hover:text-yellow-500 ">
+                <i class="far fa-thumbs-up"> </i>1000
+              </button>
+              <button class=" text-1xl hover:text-yellow-500">
+                <i class="transform rotate-180 far fa-thumbs-up"></i>10
+              </button>
+            </div>
+          </div>
           <iframe id="video" class="bg-gray-900 border-4 cambio w-full h-40 md:h-96 " src=""
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
 
-
-
-          <div class="flex items-center space-x-2 text-gray-400">
-            <div class="flex items-center ml-72 p-2">
-              <button class="mr-12 text-4xl hover:text-yellow-500 ">
-                <i class="far fa-thumbs-up"> </i>
-              </button>
-              <button class="transform rotate-180 text-4xl hover:text-yellow-500">
-                <i class="far fa-thumbs-up"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="w-full flex flex-row flex-wrap mt-3">
+          <div class="w-full flex flex-row flex-wrap mt-3 overflow-auto">
             <div class="w-3/4 ">
               <textarea class="bg-gray-200 w-full rounded-lg shadow bo  rder p-2" rows="1"
                 placeholder="Comentario..."></textarea>
@@ -183,7 +179,7 @@
                 class="float-right bg-indigo-400 hover:bg-indigo-300 text-white p-2 rounded-lg">Comentar</button>
             </div>
           </div>
-          <div class="flex items-center mt-2  ">
+          <div class="flex items-center mt-2 overflow-auto">
             <div class="flex items-center space-x-4 bg-yellow-500 p-4 border-full rounded-full">
               <a href="/u/zoltanszogyenyi" class="flex-shrink-0 w-10 h-10 overflow-hidden rounded-full shadow-sm  ">
                 <img src="../static/src/img/241730852_2731534643650202_1536711991256020619_n.jpg" alt="zoltanszogyenyi"
@@ -203,7 +199,7 @@
         </div>
       </div>
     </div>
-    <div class="text-white flex-shrink bg-gray-800 w-64 ">
+    <div class="text-white flex-shrink bg-gray-800 md:w-1/4">
       <div class="shadow-inner ">
         <div class="m-2">
           <h1 class=" mt-2 p-2 text-center border-4 border-yellow-400 text-white rounded-t-lg">Materiales de trabajo
