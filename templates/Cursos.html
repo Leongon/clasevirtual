@@ -115,7 +115,7 @@
     </div>
   </nav>
     <!-- Contenido aqui -->
-    <div class="curso mt-24 mb-24 ">
+    <div class="curso mb-24 ">
         {% if "usuario" in session: %}
          <button class="transition shadow-lg animate-bounce fixed bottom-0 right-0 mb-12 modal-open rounded-full h-24 w-24 flex items-center justify-center bg-yellow-500 text-white">
             Comprar Mas cursos
@@ -125,7 +125,7 @@
         <!-- This is an example component -->
         {% if "usuario" in session: %}
             <!-- alumno -->
-            <div x-data={show:false} class="rounded-sm">
+            <div x-data={show:true} class="rounded-sm">
                 <div class="tex-color w-full top-0 max-w-full bg-gray-900 width-f p-5" id="headingOne">
                     <button @click="show=!show" class=" text-blue-500 hover:text-blue-700 focus:outline-none"
                         type="button">
